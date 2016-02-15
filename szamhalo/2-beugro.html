@@ -1,1 +1,164 @@
-
+<!DOCTYPE html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+  <body>
+    <div class="ritz grid-container" dir="ltr">
+      <table class="waffle" cellspacing="0" cellpadding="0">
+        <thead>
+          <tr>
+            <th class="row-header freezebar-origin-ltr"></th>
+            <th id="0C0" class="column-headers-background cleanuphtml-1">
+              A
+            </th>
+            <th id="0C1" class="column-headers-background cleanuphtml-2">
+              B
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class='cleanuphtml-5'>
+            <th id="0R0" class="row-headers-background cleanuphtml-4">
+              <div class="row-header-wrapper cleanuphtml-3">
+                1
+              </div>
+            </th>
+            <td class="s0" dir="ltr">
+              1. Az alábbiak közül melyik a Wireshark előnye? 
+            </td>
+            <td class="s0" dir="ltr">
+              <ul>
+            <li> - ingyenesen letölthető (wireshark.org), ugyan itt tutorial is található
+            <li> - Több platformra is telepíthető (Windows 64/32 bin, Linux, OS X)
+            <li> - elkapja a kiválasztott hálózati interfészre/interfészekre érkező adatcsomagokat, ezekről részletes információval szolgál
+            <li> - korlátozható az elfogni kívánt, illetve elfogás után a megjelenített csomagok köre
+            <li> - a csomagokra több szempont szerint is kereshetünk
+            <li> - a forgalmi adatok elmenthetők és betölthetők
+              </ul>
+            </td>
+          </tr>
+          <tr class='cleanuphtml-5'>
+            <th id="0R1" class="row-headers-background cleanuphtml-4">
+              <div class="row-header-wrapper cleanuphtml-3">
+                2
+              </div>
+            </th>
+            <td class="s0" dir="ltr">
+              2. A Wireshark mire nem alkalmas? 
+            </td>
+            <td class="s0" dir="ltr">
+              <ul>
+              <li>Nem akadályozza meg a külső behatolást, illetve nem is figyelmeztet rá. (Tehát nem tűzfal.) Ennek ellenére felhasználhatók a “különös” dolgok felderítésére.</li>
+              <li>Nem lehet vele manipulálni a hálózati forgalmat, hanem csak mérni, megfigyelni lehet azt.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr class='cleanuphtml-5'>
+            <th id="0R2" class="row-headers-background cleanuphtml-4">
+              <div class="row-header-wrapper cleanuphtml-3">
+                3
+              </div>
+            </th>
+            <td class="s0" dir="ltr">
+              3. Az OSI modell szerint melyik rétegbe tartozik az IP (Internet Protocol)? 
+            </td>
+            <td class="s0" dir="ltr">
+            3. réteg - Hálózati réteg
+            </td>
+          </tr>
+          <tr class='cleanuphtml-5'>
+            <th id="0R3" class="row-headers-background cleanuphtml-4">
+              <div class="row-header-wrapper cleanuphtml-3">
+                4
+              </div>
+            </th>
+            <td class="s0" dir="ltr">
+              4. Az OSI modell szerint melyik rétegbe tartozik a TCP (Transmission Control Protocol)?
+            </td>
+            <td class="s0" dir="ltr">
+              2. réteg -Átviteli
+            </td>
+          </tr>
+          <tr class='cleanuphtml-5'>
+            <th id="0R4" class="row-headers-background cleanuphtml-4">
+              <div class="row-header-wrapper cleanuphtml-3">
+                5
+              </div>
+            </th>
+            <td class="s0" dir="ltr">
+              5. Mi a HTTP portszáma? 
+            </td>
+            <td class="s0" dir="ltr">
+              80
+            </td>
+          </tr>
+          <tr class='cleanuphtml-5'>
+            <th id="0R5" class="row-headers-background cleanuphtml-4">
+              <div class="row-header-wrapper cleanuphtml-3">
+                6
+              </div>
+            </th>
+            <td class="s0" dir="ltr">
+              6. Melyik kifejezéssel (capture filter) szűrhetünk csak az FTP (21 es port) forgalomra? 
+            </td>
+            <td class="s0" dir="ltr">
+              tcp port 21
+            </td>
+          </tr>
+          <tr class='cleanuphtml-5'>
+            <th id="0R6" class="row-headers-background cleanuphtml-4">
+              <div class="row-header-wrapper cleanuphtml-3">
+                7
+              </div>
+            </th>
+            <td class="s0" dir="ltr">
+              7. Melyik kifejezéssel (capture filter) szűrhetünk csak a 192.168.2.133 hostról és hostra érkező csomagokra? 
+            </td>
+            <td class="s0" dir="ltr">
+              tcp host 192.168.21.133
+            </td>
+          </tr>
+          <tr class='cleanuphtml-5'>
+            <th id="0R7" class="row-headers-background cleanuphtml-4">
+              <div class="row-header-wrapper cleanuphtml-3">
+                8
+              </div>
+            </th>
+            <td class="s0" dir="ltr">
+              8. Melyik megjelenítési szűrővel (display filter) szűrhetünk csak a POP3 (110-es port) protokoll forgalmára? 
+            </td>
+            <td class="s0" dir="ltr">
+              tcp.port eq 110
+            </td>
+          </tr>
+          <tr class='cleanuphtml-5'>
+            <th id="0R8" class="row-headers-background cleanuphtml-4">
+              <div class="row-header-wrapper cleanuphtml-3">
+                9
+              </div>
+            </th>
+            <td class="s0" dir="ltr">
+              9. Melyik megjelenítési szűrővel (display filter) szűrhetünk csak a 127.0.0.1 hostról érkező forgalomra? 
+            </td>
+            <td class="s0" dir="ltr">
+              ip.src == 127.0.0.1 and ip.dst == 127.0.0.1
+            </td>
+          </tr>
+          <tr class='cleanuphtml-5'>
+            <th id="0R9" class="row-headers-background cleanuphtml-4">
+              <div class="row-header-wrapper cleanuphtml-3">
+                10
+              </div>
+            </th>
+            <td class="s0" dir="ltr">
+              10. Hogy lehet ignorálni egy csomagot a listában? 
+            </td>
+            <td class="s0">
+              Mark Packet || Ignore Packet
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
