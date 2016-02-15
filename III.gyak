@@ -1,0 +1,38 @@
+ip
+  -privát tartományok
+  -
+ping-visszajött vagy sem
+  -test
+traceroute-csomópont(út) között
+  -test
+beágyazódás-encapsulation
+|-
+| -
+|  -rétegekkel lejebb megyrétegtől függ(adat,szegmens), mindig egy kis plus+ ad hozzá
+|  -utána visszabontja,és csak a legkülső információt(ami kell neki azt szedheli csak le)
+| -
+|-
+
+Gyakorlás(orao.pkt)
+<!-- munkaterület, sikereség, toolbox, zoomolás/tulajtonság naygító -->
+-elemzés
+  +gyors mód(pop-up)  : Ip cím, stb...
+  +port összegző táblázat :interfész, stb...
+  <!-- Options-Pref-Show device model label -->
+  kábel-interfész csatlakozás
+  Eszközök
+Switch
+Host(pc,laptop)
+Router(függ)
+Kábel(Fa-fast ethernet, wireless)
+
+Ping
+-ip keresés
+-másik gép(Deskpot, cmd, 192.168.1.1), ping légssomag
+  ping:min, max, átlag, adat
+
+Szimulációs mód
+-lépésenként lehet nézni az utat, csomagszűrés(Edit Filters: ICMP), lassítás(play control)
+-Auto captude zöld pipa
+Alulról felfele, küldendő csomag, kiegészítik egymást(beégyazódás)
+OSI modell
