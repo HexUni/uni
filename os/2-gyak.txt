@@ -1,0 +1,53 @@
+basename
+dirname
+  script-ek használatánál előnyös
+TAB : cd A (press TAB) ==> Asztal
+TAB : cd A (press TAB)
+->;<-
+history =kiadott parancsok
+Crtl+L
+Jogosultság:  írás-create/delete, olvasás-lista, vegrehajtás-cd this directory
+-tulajdonos, csoport, felhasználó
+ls -l
+dir
+- file
+l soft link
+b block
+        jogosultságok
+        3.oszop tulaj
+          4096 dir file bit
+3-jog 3-jogosultság
+chmod -R rekurzív
+  jog utána file
+a, g, 
++-= tulaj olvasás írás = execute, törtődik és csk futatni tud
+touch txt
+chmod g+w tets.txt
+chmor +x teyt.txt
+chmod o-x test.txt
+chmod g=rx os.txt
+
+        Láncolás
+        Hnrd/soft(windows parancsikon)
+        Softlink
+          http://web.cs.ucla.edu/classes/spring13/cs111/scribe/11c/links.jpg
+     echo "Hello" >test.txt
+     cat test.txt
+     ln test.txt testLink.txt /hard 
+     ls -la
+     2 hard link mutat rá
+     ---
+     ln -s link.txt slink.xtx
+     l szó jelenik meg sot link
+     plus -> jelzi hova mutat
+     
+     
+     ---------------------------------
+     who         who a i      whoami
+     groups nyul
+      tannenbaum stb...
+    finger
+    
+    ----
+    pico utána volt a nano
+    vimadventure
