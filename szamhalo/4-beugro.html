@@ -93,7 +93,7 @@
               6. Ha három gépet szeretnénk azonos hálózatba kötni, akkor melyik a legegyszerűbb módja ennek?
             </td>
             <td class="s0" dir="ltr">
-              A ping egy hálózati segédprogram, melynek segítségével ellenőrizhetjük egy host elérhetőségét és mérhetjük az üzenetek visszatérési idejét a tesztelt hostról.
+              Ha több gépet szeretnénk összekapcsolni egymással, akkor szükségünk lesz még egy hálózati eszközre, a switchre (lásd előző óra).
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -106,7 +106,8 @@
               7. Melyek azok a funkciók, amelyek user EXEC módban is elérhetők az IOS CLI-ben? (négy közül kell egyet választani)
             </td>
             <td class="s0" dir="ltr">
-              
+              Alapesetben user EXEC módban vagyunk, így egyelőre nem tudunk beállításokat módosítani. 
+              Itt  csak  korlátozott  számú  és  jogkörű  parancsot  érünk  el  (ennek listáját megnézhetjük a ? beírásával). Ebben a módban elérhetők például a már ismert ping és traceroute parancsok. 
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -119,7 +120,9 @@
               8. Mely paranccsal tudjuk egy interfész IP címét konfigurálni? (több lehetőség közül egyet kell választani) 
             </td>
             <td class="s0" dir="ltr">
-              
+              Ez  után  ki  kell  választani  azt  az  interfészt,  amelyiket  be  szeretnénk  állítani (emlékezzünk,  a  FastEthernet 0/0  és  a  FastEthernet 0/1  portokra  csatlakoznak gépek). Ezt a  
+                interface fastEthernet 0/0 
+              ip address <ip cím> <alhálózati maszk>
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -132,7 +135,9 @@
               9. Van-e lehetőség arra, hogy a beállításaink megmaradjanak egy esetleges áramszünet után is?
             </td>
             <td class="s0" dir="ltr">
-              
+                De  érdemes  elmenteni  a beállításainkat,  hogy  kikapcsolás  után  is  megmaradjanak.  Ezt  a  privileged  mód gyökerében tudjuk megtenni a következő paranccsal: 
+                      copy running-config startup-config 
+                Ez után rákérdez a fájl nevére, de nekünk elég csak egy entert ütni. 
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -145,7 +150,7 @@
               10. Mit nem kell megadni a routernek statikus útvonalválasztás esetén?
             </td>
             <td class="s0">
-            
+            A  statikus  útvonalkeresés  azt  jelenti,  hogy  megmondjuk  a  routerünknek,  hogy mely  hálózatba  irányuló  csomagot  melyik  másik  routernek  továbbítsa. 
             </td>
           </tr>
         </tbody>
