@@ -67,7 +67,15 @@
               4. Ha 192.168.5.10 egy IP cím, és a 255.255.0.0 alhálózati maszk tartozik hozzá, akkor mi a hálózat címe? 
             </td>
             <td class="s0" dir="ltr">
-              
+Address:   192.168.5.10
+Netmask:   255.255.0.0 = 16
+Wildcard:  0.0.255.255
+=>
+Network:   192.168.0.0/16
+Broadcast: 192.168.255.255 
+HostMin:   192.168.0.1  
+HostMax:   192.168.255.254
+Hosts/Net: 65534       
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -80,7 +88,15 @@
               5. Ha 192.168.5.10 egy IP cím, és a 255.255.255.0 alhálózati maszk tartozik hozzá, akkor mi a host címe? 
             </td>
             <td class="s0" dir="ltr">
-              
+ Address:   192.168.5.10
+Netmask:   255.255.255.0 = 24
+Wildcard:  0.0.0.255
+=>
+Network:   192.168.5.0/24
+Broadcast: 192.168.5.255
+HostMin:   192.168.5.1
+HostMax:   192.168.5.254
+Hosts/Net: 254
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
