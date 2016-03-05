@@ -27,7 +27,7 @@
               1.Mi a <b>LAN</b> definíciója?
             </td>
             <td class="s0" dir="ltr">
-              
+              Magyarul helyi hálózatnak nevezzük. 
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -40,7 +40,7 @@
               2.Milyen előnyei lehetnek a <b>VLAN</b>-oknak?
             </td>
             <td class="s0" dir="ltr">
-              
+              a hálózatunk egyrészt sokkal áttekinthetőbbé, másrészt sokkal költséghatékonyabbá válik. Ezen indokok hívták létre a virtuális helyi hálózatokat.
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -53,7 +53,9 @@
               3.Mit definiál az <b>IEEE 802.1Q</b> szabvány?
             </td>
             <td class="s0" dir="ltr">
-              
+              így meg kellett változtatniuk az Ethernet csomagok fejrészét. 
+              Az új szabványt IEEE 802.1Q néven adták ki.
+              Így a switchek az Ethernet keretből informálódnak arról, hogy az áthaladó csomag melyik VLAN-hoz tartozik, és ezek alapján merre kell tovább küldeni.
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -66,7 +68,7 @@
               4. Milyen tulajdonságnak kell feltétlenül teljesülnie ahhoz, hogy két számítógépet egy VLAN-ba tudjunk helyezni?
             </td>
             <td class="s0" dir="ltr">
-
+                switch táblázat feltöltése, és a a jó porton legyen a gép
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -79,7 +81,7 @@
               5.Mire szolgál a VLAN Database?
             </td>
             <td class="s0" dir="ltr">
-            
+            Ezzel tudjuk megmondani a switchnek, hogy milyen VLAN-okat ismerjen
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -92,7 +94,8 @@
               6.Mit jelent a Trunk?
             </td>
             <td class="s0" dir="ltr">
-              
+              A Trunk (magyar zsargonban „trönk”)
+              egy olyan összeköttetés két switch között, amely egyszerre több VLAN forgalmát is át tudja engedni. 
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -105,7 +108,7 @@
               7. Mire szolgál a switchport access vlan 10 utasítás?
             </td>
             <td class="s0" dir="ltr">
-              
+              VLAN10 alhálózat - Itt a következő parancsokkal tudjuk hozzáadni a VLAN10-et:Switch(config)#vlan 10
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -118,7 +121,8 @@
               8.Mire szolgál a switchport mode trunk utasítás?
             </td>
             <td class="s0" dir="ltr">
-           
+            trönkök konfigurálása-TRUNK mode<br>
+              legvégül elvégezhetjük mindkét switchre a trönkök konfigurálásá
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -131,7 +135,19 @@
               9.Melyik lépést <b>NEM</b> kell végrehajtani VLAN konfigurálásakor?
             </td>
             <td class="s0" dir="ltr">
-              
+              <details>
+  <summary>Összefoglaló</summary>
+  <p>
+  Összefoglalva a konfiguráció lépései:<br>
+1. Felépítjük a hálózati topológiát, azaz lerakjuk az eszközöket és összekötjük őket a megfelelő kábelekkel.<br>
+2. Töltsük fel a VLAN adatbázist azokkal a VLAN-okkal, amelyeket használni
+szeretnénk. Minden olyan VLAN-t vegyünk fel, ami áthaladhat a switchen,
+ne csak azokat, amiket Access móddal hozzárendelünk valamelyik porthoz!<br>
+3. Az egyes állomások felé mutató FastEthernet portokat is állítsuk be, azaz
+mindegyikre adjuk meg, hogy melyik VLAN csomagjai haladhatnak arra.<br>
+4. A két switchet összekötő portokat állítsuk be trönköknek.<br>
+  </p>
+</details>
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -144,7 +160,11 @@
              10.Melyik parancs szolgál egy Ethernet port Access módban a 10-es azonosítójú VLAN-ra állítására?
             </td>
             <td class="s0">
-           
+            <p>
+           Majd a következő utasításokkal be tudjuk állítani, hogy ezen a porton a 10-es VLAN-ra, azaz a VLAN10-re érkező csomagokat továbbítsa. <br>
+Switch(config-if)#switchport mode access  <br>
+<b>Switch(config-if)#switchport access vlan 10<b>
+            </p>
             </td>
           </tr>
         </tbody>
