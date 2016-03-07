@@ -1,0 +1,38 @@
+2015.03.07
+6.-7.gyakorlat
+ea:ZH, ea anyag, tétel kidolg
+Előfeltétel:  Mi a VLAN, STP?
+
+  LAN:egy szórási tartomány, határ
+  fizkiaal egy tartoro gépkeet Virtuális Lanokra bontjuk
+  fozikiai: kellemetlen   virt: könnyű kezehetőség
+Feladat:
+  Páros Páratlan különböző VLAN,
+  4PC, 5Switch, AUTO
+   redundáns kapcsolat:felesleges csat==2 eszköz között több kpacsolat
+  Konf(IP):Milyen hálózatba kell raknom?Egy forma IP(hálózati rész), mivel egy LAN
+    192168..1.1, nincs routetr
+    SWitcth CLI
+      (en, conf ter)
+      felvesszük: szükséges név, szám
+        vlan 10
+        name V10
+        port kiosztása= akkor az 
+        sw3:  interface fastEthernet 0/1
+        swithport mode access
+        swithport access vlan 10
+        TRUNK mode: több vlan-t tud működtetni
+        sw3: interface fastEthernet 0/2
+        swithport mode trunk
+    PDU
+    DEST: HÁLÓZAT 192.168.1.255 -SZÓRÁSI CÍM
+  roor bridge
+    en(to priv mode), show spanning-tree
+    http://www.tiikoni.com/tis/view/?id=b793933
+    FWD FORWARD BLC BLOCK
+    COST, STS
+    Őt akakrok györkérnek:
+      ex, en
+      gyökérponti hív választás, legalaxcsonyabb, leg MAC cím
+      
+    
