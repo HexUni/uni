@@ -74,7 +74,7 @@ function html_login(){
 function html_denied() {
     print p_locale_xhtml('denied');
 
-    if(!$_SERVER['REMOTE_USER']){
+    if(empty($_SERVER['REMOTE_USER'])){
         html_login();
     }
 }
@@ -226,8 +226,7 @@ function html_btn($name, $id, $akey, $params, $method='get', $tooltip='', $label
         $tip .= ' ['.strtoupper($akey).']';
         $ret .= 'accesskey="'.$akey.'" ';
     }
-    $ret .= 'title="'.$tip.'" ';
-    $ret .= '/>';
+    $ret .= 'title="'.$tip.'">';
     $ret .= hsc($label);
     $ret .= '</button>';
     $ret .= '</div></form>';
@@ -897,10 +896,9 @@ function html_index($ns){
     global $conf;
     global $ID;
     $ns  = cleanID($ns);
-    #fixme use appropriate function
     if(empty($ns)){
-        $ns = dirname(str_replace(':','/',$ID));
-        if($ns == '.') $ns ='';
+        $ns = getNS($ID);
+        if($ns === false) $ns ='';
     }
     $ns  = utf8_encodeFN(str_replace(':','/',$ns));
 
@@ -2116,7 +2114,17 @@ function html_admin(){
 
     // print the rest as sorted list
     if(count($menu)){
-        usort($menu, 'p_sort_modes');
+        // sort by name, then sort
+        usort(
+            $menu,
+            function ($a, $b) {
+                $strcmp = strcasecmp($a['prompt'], $b['prompt']);
+                if($strcmp != 0) return $strcmp;
+                if($a['sort'] == $b['sort']) return 0;
+                return ($a['sort'] < $b['sort']) ? -1 : 1;
+            }
+        );
+
         // output the menu
         ptln('<div class="clearer"></div>');
         print p_locale_xhtml('adminplugins');
