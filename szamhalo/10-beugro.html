@@ -32,7 +32,32 @@
               1.  Melyik állítások igazak a <b>statikus</b> forgalomirányításra? 
             </td>
             <td class="s0" dir="ltr">
-               
+               <details>
+               <summary>Statikus forgalomirányítás<summary> 
+Az első hálózatunk felépítésénél azt figyeltük meg, hogy bár a szomszédos esz-
+közök kommunikálni tudtak egymással, ha egy hálózatból egy másik, távolabb el-
+helyezkedő eszközt szerettem volna pingelni, akkor a csomag elakadt, nem jutott 
+ki a hálózatból. Erre az volt a megoldás, hogy minden routernek, megadtunk egy 
+egyszerű szabályt, amivel tudattuk vele, hogy melyik hálózat merre van. Ilyenkor 
+minden routernél minden lehetséges hálózatra meg kellett adni egy szabályt. Ezt 
+nevezzük statikus forgalomirányításnak. 
+Éles helyzetben ez viszont nem praktikus, rövid gondolkodás után a követke-
+zőkre jutunk: 
+<ul>
+<li>  Nagy rendszereknél a sok router és a sok lehetséges hálózat bonyolulttá 
+teheti a kezdeti konfigurációt. </li>
+<li> Ha változik a hálózat topológiája, akkor nagy munkával jár átállítani a for-
+galomirányítást (ugyanis mindet ugyan így „kézzel” kell módosítani). </li>
+<li> Esetenként akár nagyon nehezen követhető a hálózat működése. </li>
+<li>  Nem eredményez optimális forgalomelosztást, a szabályok nem veszik fi-
+gyelembe a pillanatnyi állapotot. </li>
+</ul>
+Ezekből egyértelműen látszik, hogy nem éri meg statikus forgalomirányítást 
+használni, így inkább automatikus módszereket részesítenek előnyben a hálózat 
+tervezői. 
+A következőkben áttekintjük ezeket, illetve megnézzük, hogyan lehet a Packet 
+Tracerben alkalmazni a megszerzett ismereteket. 
+</details>
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -45,7 +70,10 @@
               2.  Melyek a forgalomirányító algoritmusok fő osztályai? 
             </td>
             <td class="s0" dir="ltr">
-            	
+            	<ul>
+            	<li>  Távolságvektor alapú – a továbbiakban ezeket részletezzük </li>
+		<li>  Kapcsolatállapot alapú – a következő anyagban foglalkozunk vele </li>
+		</ul>
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -71,7 +99,39 @@
 		        4.  Milyen komponensek alkothatják a routerek közötti távolságot? 
             </td>
             <td class="s0" dir="ltr">
-            
+            	<details>
+           <summary> Távolságvektor alapú protokollok </summary>
+A távolságvektor alapú forgalomirányításnál az algoritmus a routerektől szár-
+mazó információt két szempont szerint értékeli: 
+<li>  Milyen távol van hálózat a forgalomirányítótól? (<b>Távolság)</b> 
+<li>  Milyen irányba kell a csomagot továbbítani a hálózat felé? (<b>Vektor</b>) 
+</details>
+</details><summary>TÁVOLSÁG</summary>
+A <b>távolságot</b> itt nem egyszerű fizikai távolságként értjük, hanem különböző 
+tényezőkből származtatott (esetleg súlyozott) mértékként. Ezek a tényezők a kö-
+vetkezők lehetnek: 
+<li> Ugrások száma </li>
+<li> Adminisztratív költség </li>
+<li> Sávszélesség </li>
+<li> Átviteli sebesség </li>
+<li> Késleltetések valószínűsége </li>
+<li> Megbízhatóság </li>
+</details>
+<details><summary>VEKTOR</summary>
+Az útvonal <b>vektor</b> összetevője pedig az adott útvonalban a következő csomópont 
+IP címe. 
+A távolságvektort úgy is elképzelhetjük, mint egy jelzőtáblát a kereszteződés-
+ben, ami mutatja, hogy merre, és milyen messze található a cél. Az út mentén pedig 
+további táblák találhatóak, és ahogy közeledünk a cél felé, a távolság egyre csök-
+ken. 
+Minden távolságvektor alapú forgalomirányítást használó forgalomirányító az 
+általa ismert irányítási információkat elküldi a szomszédjainak. Ezt az információt 
+a szomszédok magukra vonatkoztatják (azaz megnövelik az út távolságát), ezzel 
+jelzik, hogy innen már ennyivel nagyobb költséggel elérni az adott hálóztot. Ezután 
+továbbküldik  az  ő  szomszédjaiknak,  és  így  tovább.  Végül  minden  router  a 
+szomszédos routerek információi alapján „tanulja meg” az egyes hálózatok távol-
+ságát. 
+</details>
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -84,7 +144,11 @@
               5.  Milyen hátrányai vannak az RIP protokollnak? 
             </td>
             <td class="s0" dir="ltr">
-            
+             <ul>
+             <li>A maximum 15 ugrásnak köszönhetően csak olyan hálózatokban alkalmazható, ahol 16 forgalomirányítónál több nincs sorban egymás után kötve. </li>
+	     <li>A frissítés jelentős forgalmat jelent nagy hálózatok esetén.</li> 
+	     <li>Nagy hálózatok változása esetén lassan konvergál. </li>
+            </ul>
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -97,7 +161,17 @@
               6.  Milyen javításokat végeztek az EIGRP-ben az RIP-hez képest?
             </td>
             <td class="s0" dir="ltr">
-                
+                Ez a Cisco saját fejlesztésű protokollja, amelyet többek között a RIP hibáinak 
+kiküszöbölésére hoztak létre (pl. max. 15 ugrás, az ugrásszám, mint mérték). Ehe-
+lyett az EIGRP összetett mértéket használ, amely többek között a sávszélességből 
+és a csomag adott útvonalra vonatkozó késleltetéséből adódik össze. A protokoll 
+jellemzői: 
+<ul>
+<li>  Egy útvonal költségének kiszámítására több mértéket használ. </li>
+<li> A távolságvektor alapú protokollok következő ugrás szerinti mérték tulaj-
+donságait ötvözi további adatbázisokkal és frissítési jellemzőkkel. </li>
+<li> Maximum 224 ugrást engedélyez. </li>
+</ul>
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -110,7 +184,8 @@
               7.  Beállítható-e a Packet Tracerben egy router grafikus konfigurációjában a használt RIP verzió? 
             </td>
             <td class="s0" dir="ltr">
-              
+              Mindezt megtehetjük akár a grafikus felületen is (itt viszont nem tudjuk meg-
+adni, hogy melyik verziót használja a router). Ez a következő ábrán látszik: 
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -123,7 +198,10 @@
               8.  Mire szolgál a router rip parancs? 
             </td>
             <td class="s0" dir="ltr">
-            
+            A fenti lépésekben egyszerűen beléptünk a router admin felületére, majd a 
+router rip parancs segítségével elindítottuk a konfigurációt. Ezután beállítot-
+tuk, hogy a kettes verziót használja, majd hozzáadtuk azon hálózatokat, amelyek 
+kapcsolódnak a routerhez. 
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -136,7 +214,13 @@
               9.  Mire szolgál a network 192.168.5.0 parancs? 
             </td>
             <td class="s0" dir="ltr">
-	          
+	          Ezen belül meg már csak hozzá kell adnunk a megfelelő hálózatokat<br><br>
+	          Router(config-router)#network w.x.y.z<br>w.x.y.z is the network number of the directly connected network you want to advertise.
+	    <br><br>
+	    Router(config-router)#no network w.x.y.z<br>
+	
+
+Removes network w.x.y.z from the RIP routing process.
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
@@ -149,7 +233,14 @@
             10.  Helyes-e a network  192.168.10.0 parancs akkor, ha alhálózatok is vannak? 
             </td>
             <td class="s0">
-            
+            Ez esetben a RIP protokollnak elég mindössze a hálózati címet (alhálózati 
+rész nélkül) megadni, tehát így néz ki pl. a Router4 konfigurálása: <br>
+Router>enable <br>
+Router#configure terminal <br>
+Router(config)#router rip <br>
+Router(config-router)#version 2 <br>
+Router(config-router)#network 192.168.1.0 <br>
+   
             </td>
           </tr>
         </tbody>
