@@ -198,6 +198,9 @@ Router(config-if)#ip nat inside
               9.  Mely utasítások szükségesek a dinamikus NAT konfiguráláshoz?
             </td>
             <td class="s0" dir="ltr">
+            	<details>
+            	<summary>Ennek  beállításához  kell  használnunk  a  dinamikus  NAT-ot.  Miután 
+bekonfiguráltuk a hálózatot: </summary>
             	<code>
 R1(config)#<b>access-list 1 permit 192.168.0.0 0.0.0.255 </b><br>
 R1(config)#<b>ip nat pool test 50.0.0.1 50.0.0.5 netmask 255.0.0.0 </b><br>
@@ -210,6 +213,7 @@ R1(config-if)#ip nat outside <br>
 R1(config-if)#exit <br>
 R1(config)#exit <br>
 </code>
+</details>
             </td>
           </tr>
           <tr class='cleanuphtml-5'>
