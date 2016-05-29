@@ -1,0 +1,45 @@
+body {
+    margin: auto;
+    width: 100%;
+    text-align: center;
+    font-size: 250%;
+}
+
+header {
+    background: #f8982e;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li a {
+    display: block;
+    width: 100%;
+}
+
+/* unvisited link */
+a:link {
+    color: #000;
+}
+
+/* visited link */
+a:visited {
+    color: red;
+}
+
+/* mouse over link */
+a:hover {
+    color: green;
+}
+
+/* selected link */
+a:active {
+    color: green;
+}
+
+pre {
+	background-color: green;
+}
