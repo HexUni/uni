@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta content="true" name="HandheldFriendly" /> <meta content="width=device-width, height=device-height, user-scalable=no" name="viewport" />
 <title>Using main</title>
 <style>
 @keyframes downwardprompt {
@@ -114,10 +115,12 @@ main > header a:hover {
     background: url("http://i.imgur.com/aqACjKT.jpg?1") repeat scroll 0 0 / cover ;
 }
 
-.address {
-	font-size: 100%;
+address {
+	word-wrap: break-word;
 }
-
+article {
+	text-decoration: none;
+}
 
 </style>
 </head>
@@ -135,29 +138,28 @@ main > header a:hover {
   <p class="cv">
 	Opportunities don't happen, you create them.<br>
 	<i>Chris Grosser</i></p>
+	
 <p>
-<div>
 Welcome!<br>
 Törőcsik Richárd Tamás,<br>
 Gazdaságinformatikus BSc_N,<br>
 SZTE TTIK,<br>
-</div>
 </p>
+</div>
+
 <address>
 <a href="linked">LinkedIN</a><br>
-E-mail:<a href="mailto:Torocsik.Richard.Tamas(@)gmail.com">Torocsik.Richard.Tamas(@)gmail.com</a>.<br>
+E-mail:<br><a href="mailto:Torocsik.Richard.Tamas(@)gmail.com">Torocsik.Richard.Tamas(@)gmail.com</a>.<br>
 Webiste:<a href="http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas">http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas</a>
 </address> 
+
 <article>
-<p>Download <abbr title="önéletrajz">CV</abbr>&#10148;<a href="cv onle" style="text-decoration:none;">CV-online-torocisk-richard-tamas.pdf</a></p>
-</article>
-<div class="responsive-circle nyc-circle"></div>
+<p>Download <abbr title="önéletrajz">CV</abbr>&#10148;<a href="cv onle">CV-online-torocisk-richard-tamas.pdf</a></p>
 </article>
 
-</div>
+<div class="responsive-circle nyc-circle"></div>
 
 <footer>2016.04.14.(&copy;)</footer>
-  </div>
 </main>
 </body>
 </html>
