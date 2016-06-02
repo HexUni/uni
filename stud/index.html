@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Using main</title>
+<style>
+@keyframes downwardprompt {
+  to { transform: translateY(2rem); opacity: 0; }
+}
+* { 
+  box-sizing: border-box;
+}
+body {
+  background: #222;
+  margin: 0;
+  font-family: Avenir, Helvetica, sans-serif;
+    position: relative;
+	font-size: 2vw;
+
+}
+main { 
+  max-width: 80%;
+  margin: 0 auto;
+  background: #ffe;
+}
+main > header { 
+  position: relative;
+}
+main > header video {
+  width: 100%;
+  height: auto;
+}
+main > header h1 {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  font-size: 5vw;
+  text-transform: uppercase;
+  mix-blend-mode: overlay;
+  line-height: 1;
+}
+main > header a {
+  display: block;
+  text-decoration: none;
+  font-size: 2rem;
+  color: #fff;
+  opacity: .5;
+  position: absolute;
+  bottom: 1.5rem;
+  width: 100%;
+  text-align: center;
+  transition: .3s;
+  animation: downwardprompt 2s 1s;
+}
+main > header a:hover {
+  opacity: 1;
+}
+#maincontent {
+  padding: 2rem;
+  font-size: 120%
+}
+@media all and (max-width: 750px) {
+  main { 
+  width: 100%;
+  }
+}
+@media all and (max-width: 500px) {
+  main > header h1 { 
+  bottom: 20%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.cv {
+	text-align: center;
+}
+
+
+
+
+.responsive-circle {
+    margin: 0 auto 20px;
+    max-width: 20%;
+}
+.responsive-circle::after {
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 0;
+    margin-bottom: 20px;
+    padding-bottom: 100%;
+    width: 100%;
+}
+.responsive-circle div {
+    color: white;
+    float: center;
+    line-height: 1em;
+    margin-top: -0.5em;
+    padding-top: 50%;
+    text-align: center;
+    width: 100%;
+}
+.nyc-circle::after {
+    background: url("http://i.imgur.com/aqACjKT.jpg?1") repeat scroll 0 0 / cover ;
+}
+
+.address {
+	font-size: 100%;
+}
+
+
+</style>
+</head>
+<body>	
+	<main>
+  <header>
+    <video autoplay loop>
+      <!--<source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/forest-fire.webm">-->
+      <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/forest-fire.mp4" id="bgvid">
+    </video>
+    <h1>Törőcsik Richárd Tamás</h1>
+    <a href="#maincontent">▼</a>
+  </header>
+  <div id="maincontent">
+  <p class="cv">
+	Opportunities don't happen, you create them.<br>
+	<i>Chris Grosser</i></p>
+<p>
+<div>
+Welcome!<br>
+Törőcsik Richárd Tamás,<br>
+Gazdaságinformatikus BSc_N,<br>
+SZTE TTIK,<br>
+</div>
+</p>
+<address>
+<a href="linked">LinkedIN</a><br>
+E-mail:<a href="mailto:Torocsik.Richard.Tamas(@)gmail.com">Torocsik.Richard.Tamas(@)gmail.com</a>.<br>
+Webiste:<a href="http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas">http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas</a>
+</address> 
+<article>
+<p>Download <abbr title="önéletrajz">CV</abbr>&#10148;<a href="cv onle" style="text-decoration:none;">CV-online-torocisk-richard-tamas.pdf</a></p>
+</article>
+<div class="responsive-circle nyc-circle"></div>
+</article>
+
+</div>
+
+<footer>2016.04.14.(&copy;)</footer>
+  </div>
+</main>
+</body>
+</html>
