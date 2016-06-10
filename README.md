@@ -1,7 +1,9 @@
 # uni
 Univesity projects
 
-Courses list in wiki
+I created this git for my university projects like programs,lessons,exams..
+
+Courses list: in <a href="https://github.com/HexUni/uni/wiki">Wiki</a>
     <ul>
         <li>
             <a href="http://bit.do/b5fUu">Gazdaságinfomatikus</a>/<a href=
