@@ -13,8 +13,5 @@ Courses list in wiki
         <li>
             <a href="http://bit.do/b5fUC">Programtervezőinformatikus</a>
         </li>
-        <li style="list-style: none; display: inline">
-            <ul></ul>
-        </li>
     </ul>
 
