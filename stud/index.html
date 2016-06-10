@@ -1,166 +1,354 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta content="true" name="HandheldFriendly" /> <meta content="width=device-width, height=device-height, user-scalable=no" name="viewport" />
-<title>Using main</title>
-<style>
-/*http://thenewcode.com/777/Create-Fullscreen-HTML5-Page-Background-Video */
+    <meta charset="UTF-8">
+    <meta content="true" name="HandheldFriendly">
+    <meta content="width=device-width, height=device-height, user-scalable=no"
+    name="viewport">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- www.w3schools.com/css/css_rwd_viewport.asp -->
 
-@keyframes downwardprompt {
-  to { transform: translateY(2rem); opacity: 0; }
-}
-* { 
-  box-sizing: border-box;
-}
-body {
-  background: #222;
-  margin: 0;
-  font-family: Avenir, Helvetica, sans-serif;
-    position: relative;
-
-}
-main { 
-  max-width: 80%;
-  margin: 0 auto;
-  background: #ffe;
-}
-main > header { 
-  position: relative;
-}
-main > header video {
-  width: 100%;
-  height: auto;
-}
-main > header h1 {
-  position: absolute;
-  top: 9%;	/*	original top: 50%	*/
-  left: 1rem;
-  font-size: 5vw;
-  text-transform: uppercase;
-  mix-blend-mode: overlay;
-  line-height: 1;
-  color: white; /*visible text*/
-}
-main > header a {
-  display: block;
-  text-decoration: none;
-  font-size: 2rem;
-  color: #fff;
-  opacity: .5;
-  position: absolute;
-  bottom: 1.5rem;
-  width: 100%;
-  text-align: center;
-  transition: .3s;
-  animation: downwardprompt 2s 1s;
-}
-main > header a:hover {
-  opacity: 1;
-}
-#maincontent {
-  padding: 2rem;
-  font-size: 120%
-}
-@media all and (max-width: 750px) {
-  main { 
-  width: 100%;
-  }
-}
-@media all and (max-width: 500px) {
-  main > header h1 { 
-  bottom: 20%;
-  }
-}
-
-
-
-
-
-/*Source http://webdesignandsuch.com/make-responsive-perfect-circles-with-css */
-.responsive-circle {
-    margin: 0 auto 20px;
-    max-width: 20%;
-}
-.responsive-circle::after {
-    border-radius: 50%;
-    content: "";
-    display: block;
-    height: 0;
-    margin-bottom: 20px;
-    padding-bottom: 100%;
-    width: 100%;
-}
-.responsive-circle div {
-    color: white;
-    float: center;
-    line-height: 1em;
-    margin-top: -0.5em;
-    padding-top: 50%;
-    text-align: center;
-    width: 100%;
-}
-.nyc-circle::after {
-    background: url("http://i.imgur.com/aqACjKT.jpg?1") repeat scroll 0 0 / cover ;
-}
-
-/*Addictional styles*/
-.cv {
-	text-align: center;
-}
-
-address {
-	word-wrap: break-word;
-}
-
-article {
-	text-decoration: none;
-	text-align: right;
-}
-
-
-</style>
+    <title>Torocsik.Richard.Tamas</title>
 </head>
-<body>	
-	<main>
-  <header>
-    <video autoplay loop>
-      <!--<source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/forest-fire.webm">-->
-      <source src="http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas/342241033_CLIPCHAMP_240p.mp4" id="bgvid">
-    </video>
-    <h1>Törőcsik Richárd Tamás</h1>
-    <a href="#maincontent">▼</a>
-  </header>
-  <div id="maincontent">
-  <p class="cv">
-	Opportunities don't happen, you create them.<br>
-	<i>Chris Grosser</i></p>
-	
-<p>
-Welcome!<br>
-Törőcsik Richárd Tamás,<br>
-Gazdaságinformatikus BSc_N,<br>
-SZTE TTIK,<br>
-</p>
-</div>
 
-<address>
-<a href="www.indxe.hu">LinkedIN</a><br>
-E-mail:<br><a href="mailto:Torocsik.Richard.Tamas(@)gmail.com">Torocsik.Richard.Tamas(@)gmail.com</a>.<br>
-Webiste:<a href="http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas">http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas</a>
-</address> 
+<body>
+    <style>
+        /*http://thenewcode.com/777/Create-Fullscreen-HTML5-Page-Background-Video */
+        
+        @keyframes downwardprompt {
+            to {
+                transform: translateY(2rem);
+                opacity: 0;
+            }
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #222;
+            margin: 0;
+            font-family: Avenir, Helvetica, sans-serif;
+            position: relative;
+        }
+        
+        main {
+            max-width: 80%;
+            margin: 0 auto;
+            background: #ffe;
+        }
+        
+        main > header {
+            position: relative;
+        }
+        
+        main > header video {
+            width: 100%;
+            height: auto;
+        }
+        
+        main > header h1 {
+            position: absolute;
+            top: 9%;
+            /*  original top: 50%   */
+            left: 1rem;
+            font-size: 5vw;
+            text-transform: uppercase;
+            mix-blend-mode: overlay;
+            line-height: 1;
+            color: white;
+            /*visible text*/
+        }
+        
+        main > header a {
+            display: block;
+            text-decoration: none;
+            font-size: 2rem;
+            color: #fff;
+            opacity: .5;
+            position: absolute;
+            bottom: 1.5rem;
+            width: 100%;
+            text-align: center;
+            transition: .3s;
+            animation: downwardprompt 2s 1s;
+        }
+        
+        main > header a:hover {
+            opacity: 1;
+        }
+        
+        #maincontent {
+            padding: 2rem;
+            font-size: 120%
+        }
+        
+        @media all and (max-width: 750px) {
+            main {
+                width: 100%;
+            }
+        }
+        
+        @media all and (max-width: 500px) {
+            main > header h1 {
+                bottom: 20%;
+            }
+        }
+        /*Source http://webdesignandsuch.com/make-responsive-perfect-circles-with-css */
+        
+        .responsive-circle {
+            margin: 0 auto 20px;
+            max-width: 20%;
+        }
+        
+        .responsive-circle::after {
+            border-radius: 50%;
+            content: "";
+            display: block;
+            height: 0;
+            margin-bottom: 20px;
+            padding-bottom: 100%;
+            width: 100%;
+        }
+        
+        .responsive-circle div {
+            color: white;
+            float: center;
+            line-height: 1em;
+            margin-top: -0.5em;
+            padding-top: 50%;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .nyc-circle::after {
+            background: url("https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-9/12122664_1686694064900517_1481308305827917231_n.jpg?oh=8f6cf8195a324ec892c56ddb71fcbb28&oe=580CC8A5") repeat scroll 0 0 / cover;
+        }
+        /* www.w3schools.com/css/css_dropdowns.asp */
+        
+        .dropdown {
+    position: relative;
+    display: inline-block;
+    }
+
+    .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 25vw;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    }
+
+    .dropdown:hover .dropdown-content {
+    display: block;
+    }
+        
+
+        
+        
+    /*Addictional script*/
+        
+        
+        
+        
+        
+        
+        .cv {
+            text-align: center;
+        }
+        
+        .address {
+            word-wrap: break-word;
+            text-align: right;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .monster {
+            color: #642891;
+            background-color: white;
+            font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+            text-transform: uppercase;
+            font-weight: bolder;
+            font-size: 150%;
+        }
+        
+        article {
+            text-decoration: none;
+            text-align: center;
+        }
+        
+
+        ul {
+            list-style-type: none;  /*  include:    ul.cv {}    */
+            margin: 0;
+            padding: 0;
+        }
+        
+        li.cv {
+            margin: 10px 0;
+        }
+        
+        #cvonline {
+            background-color: #1c5b9e;
+            font-weight: bolder;
+        }
+        
+        #profession {
+            color: white;
+            background-color: #4b5f83;
+            font-weight: bolder;
+        }
+        
+
+        
+        
+    </style>
+
+    <main>
+        <header>
+          <!--Video source:(free)
+              https://videos.pexels.com/videos/sunset-over-city-404-->
+            <video autoplay="" loop="" poster="http://i.imgur.com/xfWajPy.png"><source id="bgvid" src=
+            "http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas/342241033_CLIPCHAMP_240p.webm">
+            <source id="bgvid" src=
+            "http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas/342241033_CLIPCHAMP_240p.mp4">
+            </video>
+
+            <h1>Törőcsik Richárd Tamás</h1>
+            <a href="#maincontent">▼</a>
+        </header>
 
 
-<article>
-<h2>Önéletrajz/<abbr title="önéletrajz">CV</abbr>CV Download</h2>
-<ul>
-<li>Europass &#10148;<a href="http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas/CV-Europass-20160414-Torocsik-HU.pdf">CV-Europass-20160414-Torocsik-HU.pdf</a></li>
-</ul>
-</article>
+        <div id="maincontent">
+            <div class="dropdown">
+                <span>Oktatás-BOX</span>
 
-<div class="responsive-circle nyc-circle"></div>
+                <div class="dropdown-content">
+                    <ol>
+                        <li>
+                            <a href=
+                            "https://www.dropbox.com/sh/llkgodaicw2f0ak/00XLx0Et-z">
+                            SZTE-TTIK-INFO-BSC</a>
+                        </li>
 
-<footer>2016.06.02.(&copy;)</footer>
-</main>
+
+                        <li>
+                            <a href=
+                            "http://www.stud.u-szeged.hu/Szarka.Tibor.Alex/">SZTE
+                            TTIK-PTI Dropbox</a>
+                        </li>
+
+
+                        <li>
+                            <a href=
+                            "https://drive.google.com/folderview?id=0B-HRgVJsxbrJTmpnM0ZoMXllR3M">
+                            Info BSC</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+
+            <p class="cv">Opportunities don't happen, you create them.<br>
+            <i>Chris Grosser</i></p>
+
+
+            <ul>
+                <li>Üdvözöllek!</li>
+
+
+                <li>Törőcsik Richárd Tamás,</li>
+
+
+                <li>Gazdaságinformatikus BSc_N,</li>
+
+
+                <li>(Business Informatics),</li>
+
+
+                <li style="list-style: none; display: inline">
+                    <ul>
+                        <li><abbr title="Szegedi Tudományegyetem">SZTE</abbr>
+                        <abbr title=
+                        "Természettudományi és Informatikai Kar">TTIK</abbr>,</li>
+
+
+                        <li>(University of Szeged Faculty of Science and
+                        Informatics,</li>
+
+
+                        <li>Institute of Informatics, University of
+                        Szeged),</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="address">
+            <a href=
+            "https://hu.linkedin.com/in/rich%C3%A1rd-tam%C3%A1s-t%C3%B6r%C5%91csik-647198115">
+            <img alt="LinkedIN" src=
+            "http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas/Logo-2C-28px-R.png"></a><br>
+
+            <a class="monster" href=
+            "http://beknown.com/fq2l2fl7qtl5z5w">Monster</a><br>
+            <!--
+<a href="https://www.profession.hu/" id="profession">Profession</a><br>
+<a href="http://www.cvonline.hu/" id="cvonline">
+<i><font color="#9B9B9B">c</font><font color="#9B9B9B">v</font><font color="#FFFFFF">o</font><font color="#FFFFFF">n</font><font color="#FFFFFF">l</font><font color="#FFFFFF">i</font><font color="#FFFFFF">n</font><font color="#FFFFFF">e</font><font color="#9B9B9B">.</font><font color="#9B9B9B">h</font><font color="#9B9B9B">u</font></i></a><br>
+-->
+            <br>
+            <a href=
+            "http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas/qr1/qrcode.svg">
+            Torocsik.Richard.Tamas(@)g**il.com</a><b>:E-mail(QR)</b><br>
+            <a href=
+            "http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas">http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas</a><b>:Website</b><br>
+            </div>
+
+
+        <article>
+            <h2>Önéletrajz/<abbr title="CURRICULUM VITAE">CV</abbr>
+            Download</h2>
+
+
+            <ul class="cv">
+                <li class="cv">Europass &#10148;<a href=
+                "http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas/CV-Europass-20160414-Torocsik-EN.pdf">CV-Europass-20160414-Torocsik-EN.pdf</a>
+                </li>
+
+
+                <li class="cv">Europass &#10148;<a href=
+                "http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas/CV-Europass-20160414-Torocsik-HU.pdf">CV-Europass-20160414-Torocsik-HU.pdf</a>
+                </li>
+
+
+                <li class="cv">Other &#10148;<a href=
+                "http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas/other.pdf">CV-Other-20160414-Torocsik-EN.pdf</a>
+                </li>
+
+
+                <li class="cv">Other &#10148;<a href=
+                "http://www.stud.u-szeged.hu/Torocsik.Richard.Tamas/other.pdf">CV-Other-20160414-Torocsik-HU.pdf</a>
+                </li>
+            </ul>
+        </article>
+
+
+        <div class="responsive-circle nyc-circle">
+        </div>
+
+
+        <footer>
+            2016.<abbr title="Please contact me at email.">(&copy;)</abbr>
+        </footer>
+    </main>
 </body>
 </html>
