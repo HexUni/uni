@@ -1,0 +1,2452 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title>OSI modell, TCP/IP modell</title>
+	<meta name="generator" content="LibreOffice 5.1.3.2 (Linux)"/>
+	<meta name="author" content="Holyway"/>
+	<meta name="created" content="2012-05-21T15:03:00"/>
+	<meta name="changedby" content="Holyway"/>
+	<meta name="changed" content="2012-06-01T08:49:00"/>
+	<style type="text/css">
+		@page { margin: 0.98in }
+		p { margin-bottom: 0.1in; direction: ltr; color: #000000; line-height: 120%; orphans: 2; widows: 2 }
+		p.western { font-family: "Times New Roman", serif; font-size: 12pt; so-language: hu-HU }
+		p.cjk { font-family: "Times New Roman", serif; font-size: 12pt; so-language: zh-CN }
+		p.ctl { font-family: "Times New Roman", serif; font-size: 12pt; so-language: ar-SA }
+	</style>
+</head>
+<body lang="en-US" text="#000000" dir="ltr">
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+<i><u><b>OSI modell, TCP/IP modell</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.08in; line-height: 100%">
+<i><b>Motiváció a referencia modellek mögött (5 pont)<br/>
+</b></i>A
+hálózati referencia modellek felépítésének célja, hogy az
+egyes, kommunikációban részt vevő „alrendszerek” működését
+elkülönítsék, és az egyes rétegek fejlesztését egyenként
+lehetővé tegyék. A referencia modellek felépítése így réteges,
+az egyes rétegek csak a szomszédos rétegekkel kommunikálhatnak. A
+felsőbb és alsóbb rétegekben lezajló folyamatoknak a köztes
+réteg számára transzparensnek kell lenni, így a kommunikációs
+folyamat során gyakorlatilag az azonos szinten lévő protokollok
+kommunikálnak egymással. Az egyes rétegek feladata jól definiált,
+tehát a referenciamodell rétegeinek feladatköre úgy van
+meghatározva, hogy önállóan fejleszthetőek legyenek az ide
+tartozó protokollok, de ne is legyen az egyes rétegek feladatköre
+túlságosan széleskörű.</p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+<br/>
+<br/>
+
+</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.08in; line-height: 100%">
+<i><b>OSI modell rétegek, ezek leírása példákkal (15 pont)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.08in; line-height: 100%">
+Az egyik ilyen referenciamodell az OSI modell. Az OSI modell egy
+elméleti modell, melyet a valóságban sosem valósítottak meg a
+leírt formában, így nincsenek is az egyes rétegekhez rendelt
+konkrét protokollok. Az OSI réteg 7 szintből áll, ezek rendre a
+fizikai, adatkapcsolati, hálózati, szállítási, viszony,
+megjelenítési, és alkalmazási rétegek.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.08in; line-height: 100%">
+A fizikai réteg feladata az adatok átvitele valamilyen fizikai
+közegen keresztül. A réteg feladatai közé tartozik a moduláció,
+alacsony szintű hibakezelés (hibajelzés), az egyes szimbólumokhoz
+tartozó jelek. (Amplitúdó, frekvencia, feszültségszintek, stb.)
+A fizikai réteg feladata definiálni az átviteli közeg jellemzőit,
+az erek számát, és feladatát. Összefoglalva: a fizikai réteg
+feladata minden, ami az átvitel során nem konkrétan a szoftveres
+megoldásokhoz kapcsolódik. (Ilyen protokollra példa lehet az
+RJ-45ös UTP kábel, és annak használatához kapcsolódó
+protokollok, átviteli módszerek, és hálózati csatolók, a
+jelismétlők, HUBok.)</p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+Az adatkapcsolati réteg feladata a számítógépek fizikai címzése,
+a helyi hálózat működtetése. (MAC, medium access control). A
+közeg hozzáférési réteg is foglalkozik hibakezeléssel,
+esetlegesen hibajavítással, az adatok szükségszerű
+újraküldésével ütközés esetén, esetlegesen a helyi hálózat
+szegmentálásával. Legfontosabb feladata a közeg, mint erőforrás
+megosztása a kommunikációban részt vevő felek között, és az
+üzenetek helyi hálózaton, a hostok közötti átvitele. (Erre jó
+példa lehet az Ethernet protokoll, ezen a szinten működnek a
+kapcsolók, hidak.)</p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+A hálózati réteg feladata a kommunikációban részt vevő
+eszközök logikai címzése, hierarchikus hálózati felépítést
+téve lehetővé. Szintén a réteg feladata a routing, vagyis a
+hálózatok közötti forgalomirányítás. (Ilyen protokollra példa
+lehet például az IP, ezen rétegben működnek a routerek).</p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+A szállítási réteg feladata a kommunikációban résztvevő
+hostokon futó alkalmazások összekapcsolása, az alkalmazások
+azonosítása, és a köztük lévő megbízható, vagy legjobb
+szándékú kapcsolat felépítése, hibakezelés, a hálózat
+terheltségének figyelembe vételével történő átvitel. (UDP,
+TCP)</p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+A viszony réteg feladata a kommunikációban résztvevő eszközök
+között kapcsolatok, ún. viszony felépítése, kapcsolat
+felépítés, kapcsolat kezelése, és bontása.</p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+A megjelenítési réteg az alkalmazások számára nyújt
+szolgáltatásokat, megvizsgálja az adatok formátumát,
+felépítését, egyszerű titkosítást, tömörítést tesz
+lehetővé, például átalakítja a bejövő soros adatokat ASCII
+kódú szöveggé, vagy XML fájlt hoz létre a bejövő
+adatstruktúrából.</p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+Az alkalmazási réteg szolgáltatásokat nyújt a felhasználónak
+az alatta található rétegek szolgáltatásainak segítségével.
+(http, smtp, dns)</p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+<br/>
+<br/>
+
+</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.08in; line-height: 100%">
+<i><b>TCP/IP rétegek, ezek leírása példákkal (20 pont)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+A TCP/IP modell egy az OSI modelltől eltérő módon nem csupán
+elméleti, hanem a gyakorlatban is használt referenciamodell,
+melyben az OSI modell egyes rétegei összevonásra kerültek a
+gyakorlatban megjelent protokollok alapján, illetve praktikussági
+szempontokból. A TCP/IP modell csupán négy rétegből áll, ezek
+rendre a Fizikai, vagy kapcsolati réteg (Mely a fizikai és
+adatkapcsolati rétegeket foglalja magába), az Internet réteg
+(Hálózati réteg), a Szállítási réteg (Szállítási réteg),
+és az Alkalmazási réteg (Minden más).</p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+A Link réteg, vagy host és hálózat közötti réteg igazából
+erősen definiálatlan a TCP/IP modellben, alapvetően annyi van vele
+kapcsolatban megszabva, hogy egy olyan felületet kell biztosítson,
+mely az IP csomagok átvitelére alkalmas. Ettől függetlenül,
+de-facto szabványok jelentek meg, melyeket ma már szorosan
+összekapcsolunk a TCP/IP modellel. Ezeket a szabványokat két
+csoportba oszthatjuk. Fizikai, és Adatkapcsolati rétegekbe. A
+Fizikai rétegben a 10Base-T, 100Base-TX, 1000Base-TX, stb.
+találhatóak, vagyis azon protokollok, és szabványok, melyek a
+fizikai megvalósításért felelnek, vagyis a koax, csavart érpár,
+optikai szálak, stb. Az adatkapcsolati rétegben legtöbbször az
+Ethernet szabványt alkalmazzák, mely egy üzenetszóráson alapuló
+közegmegosztási protokoll, CSMA/CD típusú közegmegosztással.</p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+Az internet réteg a referenciamodell legszűkebb, és legstatikusabb
+„magja”, mely kizárólag az IP szabvány alkalmazásából áll.
+A szabványnak van egy IPv4es, és egy IPv6-os változata. A réteg
+feladata azonos, mint az OSI réteg hálózati rétegének, tehát a
+hálózati hierarchikus logikai címzés megvalósítása, illetve
+forgalomirányító protokollok segítségével az IP alapú
+forgalomirányítás hálózatok között. 
+</p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+A szállítási réteg feladata sokrétű, de alapvetően az OSI
+réteg feladatait végzi el. Két alapvető protokollja a TCP, és az
+UDP. A TCP protokoll egy megbízható, kapcsolat alapú protokoll,
+mely minden csomag elküldése után nyugtázza a csomag érkezését.
+A TCP csomagokban ellenőrző összeg teszi lehetővé a
+hibadetektálást, illetve a nyugta hiányában a rendszer képes
+felmérni a csomagveszteséget, és bonyolult algoritmusok
+segítségével megelőzni a hálózat túlterhelését. Az UDP egy
+legjobb szándék alapú protokoll, mely folyamatos adatbombázást
+okozhat, ezért használata mellőzött, és elsősorban management
+célokat szolgál.</p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+Az alkalmazási réteg alkalmazási szintű hibakezelést, és
+szolgáltatások nyújtását teszi lehetővé, legyen az weblapok
+megtekintése, email, telnet kapcsolat, torrent, stb.</p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%; page-break-before: always">
+<i><u><b>Fizikai réteg</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+<br/>
+<br/>
+
+</p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+<i><b>Fejlődése (5 pont)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+A fizikai rétegben először természetesen a réz alapú
+technológiák voltak elterjedtek (Az első Transz-Atlanti kábelek
+is ilyen kábelek voltak.), elsősorban a koaxiális, később a
+vékony koaxiális, stb. Kissé később jelentek meg a sokkal
+nagyobb átviteli sebességet lehetővé tevő, és sokkal nagyobb
+távolságokra működő optikai kábelek (több-, ill. egy-modusú
+kábelek), melyek (pl. a mai TAT-14) több gigabites átviteli
+kapacitást is lehetővé tesznek. Persze nem csak a szilárd, de az
+elektromágneses hullámú, szabadtéri átviteli berendezések
+fejlődése is nagymértékű. (Műholdas kapcsolatok, irányított
+antennák, WiFi – 54Mbit/s átvitel)</p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+<br/>
+<br/>
+
+</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Jelek (felosztása, spektrális felbontása, csatorna hatások,
+torzítások, zajok) (10 pont)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+A fizikai közegen keresztül juttatjuk a jeleket az adótól a
+vevőig. A jeleket több szempontból is csoportosíthatjuk.
+Matematikai megközelítésben minden, egy forrást elhagyó zavart
+elemezhetünk, ezeket jeleknek nevezzük. Abban az esetben, ha ezeket
+a jeleket valamilyen céllal, meghatározott módon állítjuk elő,
+determinisztikus, mesterséges jelekről beszélünk. A jelek
+lehetnek analóg, vagy digitális jelek. Analóg jelek esetén az
+átvitt jelek értéke (a vizsgált, információt tartalmazó
+tulajdonságot vizsgálva) tetszőleges lehet, valós számok
+formájában változhat. Ha egy jel digitális, akkor (persze a
+technológia korlátain belül) kvantált értékeket rendelhetünk
+az egyes jelekhez, melyek „integeresen” változhatnak. A jelek
+persze lehetnek periodikusak, vagy aperiodikusak.</p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+Az analóg jeleket (melyekre akár digitális jel is ültethető)
+érdemes sinuszos, vagy cosinusos, harmonikus jelek összegeként
+vizsgálnunk, így könnyebben felderíthetők az egyes zajok, vagy
+hibák. Ehhez a jel spektrális felbontása szükséges. A periodikus
+jelek Fourier-sora: szum/i=-végtelentől +végtelenig/(x<sub>i</sub>e<sup>2πt/ijT
+</sup>)</p>
+<p lang="hu-HU" class="western" style="margin-bottom: 0.08in; line-height: 100%">
+Ha determinisztikus jeleket állítunk elő, és azt egy csatornán
+küldjük át, óhatatlan, hogy a csatorna fizikai tulajdonságai,
+vagy a csatornára ható külső hatások manipulálják a jelet,
+esetlegesen megnehezítve, vagy lehetetlenné téve a jel
+információtartalmának kinyerését. <br/>
+A csatorna önmagában
+általában csillapításával „rombolja” a jelet. Ez réz alapú
+(vagy szabadhullámú) átviteli közeg esetén az amplitúdó
+gyengülésében, a sinusos jel „ellaposodásában” mutatkozik,
+optikai kábelek esetén a kábel magjában található
+szennyeződések, illetve a tökéletlen visszaverődések által
+szórt, vagy elnyelt fény formájában fordul elő. A réz alapú
+átviteli közegek esetén a csatorna hőmérsékletéből (termikus
+módon mozgó elektronok) adódó termikus zaj is jelentős lehet.
+Ezen kívül, a csatornára jellemző probléma lehet még a
+torzítás. A torzítás azt jelenti, hogy az átvitelhez használt
+közeg, illetve elektronikus berendezések (pl. jelismétlők,
+erősítők) a különböző frekvenciájú jeleket különböző
+sebességgel továbbítják, esetlegesen különböző mértékben
+erősítik.<br/>
+Külső forrásból származó zavaró hatások
+lehetnek az ipari zajok, melyek a tápellátás ingadozásából
+adódnak, de lehetnek külső EM sugárforrások is, melyek közelében
+a réz alapú közeg antennaként viselkedve indukálódik, mely
+roncsolja az átvitt jeleket. Ezen kívül, a nem megfelelően
+előkészített réz alapú közeg (például túlságosan hosszan
+szétcsavart UTP kábel) áthallási jelenséget is okozhat, mely a
+két, egymás mellett lévő ér kölcsönös indukciója miatt
+jelentkezhet - (Near, Far áthallás). A zajok jelekre gyakorolt
+hatását általában a jel/zaj viszony alapján határozzuk meg,
+S/N, ahol S a jel teljesítmény, N a zajteljesítmény.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Elektromágneses hullámok, Szabad hullámú összeköttetések,
+Vezetett hullámú összeköttetések, Szimmetrikus kábel, optikai
+kábel (10 pont)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az elektromágneses hullámok a levegőben, vákuumban, vagy optikai
+szálakba csapdázva megfelelő jeltovábbítást tesznek lehetővé.
+</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A szabad hullámú elektromágneses hullámokat antennák
+segítségével állítjuk elő, illetve vesszük. Az ilyen jellegű
+adattovábbítás kis- és nagy kiterjedésű hálózatok
+kialakítására egyaránt alkalmasak, azonban a használható
+frekvenciasáv-, és teljesítménykorlátozások miatt nagy
+méretekben engedélyekhez kötött a megvalósítása. A jelek
+kisugárzása két módon valósítható meg: vagy szabadon
+sugározzuk, vagy irányítottan. Utóbbi esetben kisebb a
+lehallgatás valószínűsége, és kisebb teljesítmény is elegendő
+nagy távolságok áthidalásához, azonban elsősorban pont-pont
+összeköttetések kialakítására alkalmas. A hullámok terjedése
+lehet felületi hullám (mely követi a föld görbületét és
+fokozatosan csillapodik), térhullám (mely az ionoszféráról
+visszaverődve vételi pontokat, és holtzónákat hoz létre, amint
+„pattog” a földfelszín és az ionoszféra között, a légkör
+állapotától függ az áthidalható távolság), illetve közvetlen
+hullám, mely közvetlen rálátással érzékelhető.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A vezetett hullámú összeköttetések esetén valamilyen réz alapú
+közegen, optikai szálon vezetünk keresztül elektromos, vagy
+elektromágneses hullámokat. A jeleket előbbi esetben valamilyen
+elektromos jelre moduláljuk, utóbbi esetben lézerek, vagy ledes
+fényforrások segítségével egy, vagy több, különböző
+hullámhosszú fényt vezetünk át a kábelen.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A szimmetrikus kábelekben érpárok segítségével hozzuk létre az
+átviteli közeget. Ilyen kábel például az UTP, vagy az STP,
+melyek a 10BASE-T, vagy 100BASE-TX, stb. szabványok alapját
+képezik. A TP (Twisted pair) kábelekben 4 pár, szigetelővel
+bevont, az áthallást és az antenna hatást kiküszöbölendő
+páronként összesodrott érpár található, egyenes, vagy kereszt
+kötéssel (aktív-passzív, aktív-aktív közé), RJ-45
+végződtetésekkel. Informatikában használt típusai a CAT-3,
+CAT-5, CAT-5e. 100m távolságig, max 1Gbit/s adattovábbítást tesz
+lehetővé. Árnyékolt változata az STP. További használt
+kábeltípusok lehetnek: vékony-koax, vastag-koax.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az optikai kábelek egy optikailag sűrűbb magból, és egy
+optikailag ritkább köpenyből épülnek fel, melyet több réteg
+védőburok takar. A magba megfelelő szögben juttatott fénynyaláb
+(LED, de inkább LASER) a mag és a köpeny határfelületén teljes
+visszaverődést szenved, és a kábel másik végén lép ki.
+Létezik egy, vagy több modusú típusa is a mag átmérője és az
+egyszerre átvitt fénynyalábok száma szerint. Az optikai
+összeköttetés megvalósítása érpár segítségével történik
+(egy kábel csak szimplex átvitelre alkalmas).    <br/>
+<br/>
+<br/>
+
+</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Közegmegosztás, Moduláció (15 pont)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Réz alapú közeg használatakor a vezetéken egy szinuszos
+alapjelet vezetnek át, majd erre modulálják rá az átviendő
+jeleket. Analóg átvitel esetén az alaphullám frekvenciájának
+(FM), amplitúdójának (AM) módosításával, vagy a hullám
+fázisának elforgatásával hozzák létre a jeleket. <br/>
+Digitális
+átvitel esetén lehetséges az előbbi módszerek közül egyszerre
+többet is alkalmazni, esetlegesen finomabban hangolni az egyes
+módszereket. QPSK moduláció esetén a fázismoduláció esetében
+az egyes jelek nem 180, hanem csupán 90 fokkal való eltolásával 4
+lehetséges jelszint hozható létre (ez két bit/jel). <br/>
+QAM
+esetén 90 foknál is finomabban használhatjuk a fázismodulációt,
+mi több, a jel amplitúdóját is megváltoztatjuk az egyes
+jelszintek kialakításához, így nagy számú különböző
+jelszintet hozhatunk létre. Ez azonban azt is jelenti, hogy egy jel
+elvesztése (zavar miatt) egyszerre több bit sérülését is
+jelenti, ráadásul a zavarok hatása a jelszintek közti kisebb
+különbség miatt nagyobb is, ezért az adó a csatorna állapotától
+függően automatikusan képes módosítani a használt QAM
+típusát.<br/>
+Pulzus moduláció esetén a vezetéken
+áramimpulzusokat küldünk át, melyek amplitúdója, hossza,
+elhelyezkedése, sűrűsége, mintázata adhatja ki a különböző
+jelszinteket. PCM –pulzus kód, PAM – pulzus amplitúdó, PPM –
+pulzus pozíció, PWM – pulzus szélesség, PDM – pulzus sűrűség
+moduláció, stb.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Ha egy vezetéken egynél több jelet is egyidejűleg át szeretnénk
+juttatni, azt két módon tehetjük meg. Vagy FDM, azaz
+frekvenciaosztásos multiplexálást alkalmazunk, melynek során az
+egyes átviteli csatornákat különböző vivőjel frekvenciákkal
+oldjuk meg, (ez azonban interferenciához, vezethet, ezért ez inkább
+analóg átvitelnél használatos) vagy TDM-mel, ahol egy közös,
+gyors átviteli közeg használatát időszeletekre bontjuk, és az
+egyes, az átviteli csatorna átviteli sebességénél lassabb
+forrásból származó adatokat ezekben az időszeletekben engedjük
+át. 
+</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; page-break-before: always">
+<i><u><b>Adatkapcsolati réteg</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Feladata, Átviteli módok, Bit szinkronizálás, Hiba
+érzékelés, Keretezés (10 pont)<br/>
+Kódolás (10 pont)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az adatkapcsolati réteg feladata a hálózati eszközök helyi
+hálózaton való összekapcsolása, vagyis a puszta fizikai
+kapcsolat „vezeték-szerűvé” tétele. Ehhez az egyes hostokhoz
+címet kell rendelni, ezen címet felhasználva kell a helyi
+hálózaton az adatforgalmat irányítani, biztosítani a fizikai
+közeg megosztását, a helyi hálózat szegmentálását, az
+alacsony szintű hibadetektálást, esetlegesen hibajavítást, a
+közegre való kódolást, keretezést, szinkronizációt.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az adatkapcsolati réteg feladatköre igen széleskörű, és nagyban
+függhet a használt közegtől ill. vonaltól, mely lehet fizikai
+pont-pont összeköttetés, pl. TP kábel, koaxiális kábel
+segítségével,  vagy száloptika segítségével, lehet
+szabadhullámú, pl. mikrohullámú átvitel, de lehet akár egy
+logikai vagy fizikai vonal is egy kapcsolt, pl. frame relay hálózaton
+keresztül. Az átviteli mód lehet szinkron, vagy aszinkron. Az
+adatok átviteléhez a legkisebb egységtől kezdve (bit) a réteg
+által kezelt legnagyobbig (keret) az adatátvitelt szinkronizálni
+kell, vagyis a vevőnek pontosan tudnia kell, hogy hol kezdődik a
+keret, abban mely adatok (a hasznos bitek) hol találhatóak,
+illetve, fontos, hogy a vevő fél tudja, hol 0, és hol 1 a
+jelszint.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A bitszinkronizálás a megfelelő <i><b>kódolás</b></i>
+segítségével történik. Optimális esetben olyan kódolási
+formát használunk, melyből a vevő képes az átvitelhez tartozó
+órajel felismerésére, és felhasználására. Ezen kívül, olyan
+kódolásra van szükség, mely minimális egyenáramot gerjeszt az
+átviteli közegben, így az átviteli távolág nagy mértékben
+megnövelhető, és egyszerűbb a közegen található eszközök
+tápellátása. Ilyen kódolás lehet a bipoláris kódolás, vagy a
+manchester kódolás (ieee 803.2). Előbbi nem igazán használatos,
+mert kevés DC-t hoz létre, (0 esetén a feszültség 0, 1-es esetén
+felváltva 1 vagy -1, így az egyesek által létrehozott
+feszültségek végülis kiegyenlítik egymást, minimális
+egyenáramú komponenst gerjesztve, ez azonban nem mindig tökéletes)
+míg a Manchester kódolás, melynél a jelzési idő felénél
+bekövetkezett jelváltás iránya adja az 1 ill. 0 értéket, nem
+hoz létre egyenáramú komponenst. Manchester kódolás esetén
+minden átvitt jel közepén van egy jelváltás, illetve a jelzési
+idők elején, amennyiben ez szükséges a jelváltás irányának
+helyességéhez. (Léteznek még az NRZ, RZ (ritkán), HDB3, CMI
+(fejlettebb) kódolások.)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A hibák átvitel közbeni keletkezését a lehető legnagyobb
+valószínűséggel detektálni kell, a hiba bekövetkezésekor pedig
+valamilyen mechanizmust kell futtatnunk, hogy a hibát kiküszöböljük.
+Ez két módon lehetséges. Vagy nagy mennyiségű redundáns
+információt küldünk át a keretekkel, melyek segítségével mind
+a hiba megléte, mind helye megállapítható, és bit invertálással
+javítható, vagy pedig csak olyan információt küldünk át, mely
+a hibadetektálást segíti, majd ha hiba következik be,
+újraküldéssel kiküszöböljük. (Ez utóbbit visszacsatolásos
+módszernek nevezzük, gazdaságossági szempontokból ez az
+elterjedtebb.)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A visszacsatolásos érzékelésnek két fontos része van, a
+hibadetektálás, illetve a hiba bekövetkeztekör működésbe lépő
+újraküldő algoritmus.<br/>
+Hibaérzékelésre több módszer is
+létezik. Paritás bit használata esetén bájtonként meghatározzuk
+a bájtban található bitek összegének párosságát, ez alapján
+beállítunk egy plusz bitet. Ha az átvitel során páros számú
+bit megsérül, ezt érzékeljük. (Mivel nem minden esetben jelez,
+nem megbízható módszer, viszont nagyon kevés plusz információ
+átvitelére van szükség.) Ellenőrző összeg használata esetén
+az adatblokk byteokat összeszámolják, és a blokk végére
+illesztik. A módszer egy bites hibák megtalálására képes, és
+ált. paritás ellenőrzéssel együtt használatos. Ciklikus
+redundancia ellenőrzés esetén 16 vagy 32 bites ellenőrző kód
+készül a blokk végére. Ezzel a módszerrel a blokkosan előforduló
+hibák is detektálhatók.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A protokoll az adatokat keretekbe ágyazza, melyek a protokoll
+működéséhez szükséges adatokat tartalmazzák, kezdve a keret
+kezdet jelzővel (keret szinkron), cím mezőkkel, adatblokkal,
+ellenőrző összeggel, esetleges forgalomszabályozással, keret
+vége jelzővel, létrehozva a kommunikáció alapegységét. 
+</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Kommunikációs hálózatok, ezek rövid kifejtése (10 pont)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A kommunikációs hálózatoknak két alapvető fajtáját különítjük
+el, ezek a kapcsolt, és az üzenetszórásos hálózatok. Kapcsolt
+hálózatok esetén az adatok meghatározott útvonalon, pont-pont
+összeköttetések mentén jutnak el az adótól a vevőig, áramkör
+vagy csomagkapcsolt módon. Előbbi esetben fizikailag hozunk létre
+egy vonalat az adó és a vevő között, utóbbi esetben logikai
+módon, kapcsolatorientáltan (tehát előre meghatározott, fix
+útvonalon), vagy csomagkapcsolt módon (az adatot csomagokra bontva,
+az egyes csomagokat egyenként irányítva –a körülményektől
+függően akár eltérő útvonalakon –) juttatjuk el a forrástól
+a célig.<br/>
+Üzenetszórásos hálózatok esetén (ilyen például
+a LANokban előszeretettel alkalmazott Ethernet) az állomások egy
+közös médiumra juttatják ki az üzeneteket, majd a médiumra
+kapcsolt egyes állomások csak azon üzeneteket dolgozzák fel,
+melyek nekik szólnak. A közös médium megosztása az
+adatkapcsolati réteg feladata.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A nagyobb távolságokat átívelő hálózatokban általában nem
+kizárólag réz alapú kommunikációt valósítanak meg, ezeket a
+hálózatokat hibrid hálózatoknak nevezzük. Ilyen hálózatokban a
+hálózat réz alapú, és optikai alapú részében különböző
+adatkapcsolati réteg-beli protokollok alkalmazására van szükség,
+melyeknek azonban együtt kell tudniuk működni (és az IP alapú
+kapcsolatokat ezen a hálózaton keresztül továbbra is transzparens
+módon kell megvalósítani, a különböző adatkapcsolati
+protokollok ellenére is).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az adatok multiplexálását kezdetben analóg módon valósították
+meg (FDM), ám ekkor még inkább a hang átvitele, több különböző
+telefonvonal egy vezetékbe multiplexelése, pont-pont kapcsolatok
+telefonközpontok között volt a legfontosabb feladat. Az
+adatátvitel megjelenésével igény nyílt a digitális átvitelre,
+illetve nagyobb hatékonyságú hangátvitel kezelésére, ezért a
+beérkező analóg jeleket a decibel-skálához, illetve a fül
+érzékenységéhez igazítva 8 bites formába digitalizálták, majd
+TDM multiplexeléssel (bit, de ink. bájt alapúan) küldték át a
+nagy átviteli kapacitású közös médiumon. A digitális
+adatátvitel megjelenésével jelentek meg a TDMA multiplexelt
+kapcsolatok, ahol több adatátviteli csatornát vittek át egyazon
+kábelen, minden csatornához tartozik egy kerethossz, és
+round-robin módszerrel vannak a kábelen kiküldve. Európában E1,
+Amerikában T1 az alapcsatorna, ennek osztásával, illetve
+többszörözésével biztosítható az igényeknek megfelelő
+átviteli kapacitás.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+(A részt ki lehet egészíteni a távközlő hálózatok
+részletesebb történetével, de nem hiszem hogy erre szükség
+lenne.)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>PDH, szolgáltatása, felépítése, problémák (10 pont)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A PDH egy alapvetően réz alapú, koaxiális, nagy sebességű
+kapcsolatok létrehozására használatos protokoll, mely az E1/T1
+csatornák szinkron TD multiplexelésével E4/T4 szintig (kb. 140
+Mb/s) képes az adatok átvitelére. Az egyes csatornák átviteli
+sebessége kissé eltérő lehet, ez a kommunikációban részt vevő
+eszközök órajelének apró eltéréséből, illetve a koaxiális
+kábelek különböző körülmények közötti adatátviteli
+sebességkülönbségéből eredhet. Az átvitelhez alapvetően négy
+bejövő csatornát lehet egy közös csatornára multiplexelni, a
+következő módon. Minden bejövő csatornáról fogunk egy bitet,
+és round-robin módszerrel helyezzük be őket a közös csatornába.
+A túloldalon lévő demultiplexer az előbbi által küldött
+addicionális bitek alapján képes eldönteni, melyik bejövő bit
+melyik csatornához tartozik, és képes azt szétbontani. Az egyes
+multiplexerek mindig azt feltételezik, hogy az adatfolyamok a
+maximális sebességen üzemelnek. Ha egy bejövő, multiplexálandó
+csatorna lassabban működik, és a multiplexer számára nincs mit
+behelyezni a közös csatornába, a vevő multiplexer felé jelzi,
+hogy bithiány van, így az korrekt módon lesz képes kinyerni az
+adatot. A magasabb, 2,3,4 szinteken hasonlóan működik a rendszer,
+minden szint 4 alatta lévő csatorna összefogásával jön létre.
+A technológia korlátai közé tartozik, hogy a PDH megvalósítására
+sok különböző szabványt vezettek be, melyek egymással nem
+kompatibilisek, alapvetően nem boldogul jól az optikai szálakkal,
+pont-pont összeköttetéseken túl problémát jelenthet az adó és
+vevő közti szinkronizáció megoldása, nem tartalmaz a hálózat
+managelését lehetővé tevő addicionális csatornákkal, ráadásul
+nem lehetséges adatfolyamok leválasztása anélkül, hogy a teljes
+adatfolyamot demultiplexálnánk. (Ráadásul, ha egy E4es
+csatornából ki akarunk nyerni egy E1-es adatfolyamot, egyszerre
+több demultiplexálásra, és így több multiplexer berendezésre
+is szükségünk van, ami drága.) További hátrányt jelenthet,
+hogy konfigurálása is nehézkes.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; page-break-before: always">
+<i><u><b>Közeghozzáférési alréteg</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Feladata, csatorna hozzárendelés (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A közeg-hozzáférési alréteg az adatkapcsolati réteg egy
+alrétege, melynek feladata a közös médiumra csatlakozó
+berendezések számára olyan szabályok biztosítása, mely
+segítségével a közös csatorna a legnagyobb kihasználtság
+mellett megosztható. <br/>
+A réteg általában két módon
+működhet:<br/>
+Statikus módon hozzárendelünk az egyes adókhoz
+valamilyen frekvenciát (FDM), vagy időszeletet (TDM), így
+elkerülve az ütközéseket, ez azonban igazán csak pont-pont
+típusú összeköttetések esetén alkalmazható, (esetlegesen
+szabadhullámú összeköttetéseknél) drága, és speciális
+berendezések használatát teszi szükségessé. <br/>
+Az
+egyszerűbb, helyi hálózatokban általában dinamikus csatorna
+hozzárendelés történik, tehát abban az esetben, ha egy eszköz
+adni akar, akkor valamilyen algoritmus alapján megkapja a csatorna
+használatát, a számára szükséges időre. ( Ez a módszer
+általában üzenetszórásos hálózatokban jellemző.)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az üzenetszórásos hálózatokra jellemző tulajdonságok:<br/>
+-
+egy közös csatorna van, melyet egy időben csak egy eszköz
+„birtokolhat”, mint erőforrást<br/>
+- az egyes hostok
+függetlenül működnek<br/>
+- az egyes hostok meghatározott
+hosszúságú kereteket küldhetnek<br/>
+- küldés bármikor
+lehetséges – folyamatos, vagy csak diszkrét időszeletek elején
+(– réselt idejű hozzáférés), a protokoll működésének
+függvényében.<br/>
+- Mivel a hostok bármikor küldhetnek,
+ütközések fordulhatnak elő, ha két host egyidőben küld
+üzenetet. Ezt az ütközést minden host képes érzékelni.<br/>
+-
+A protokoll típusától függően lehet vivőjel-érzékelés is
+(tehát a hostok tudják detektálni, hogy a csatorna foglalt, vagy
+szabad.)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Egyszerű Aloha (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az egyszerű ALOHA az első közeghozzáférési protokollok egyike,
+melyet üzenetszórásos hálózatok számára fejlesztettek ki.
+Vivőjel érzékelés nélküli, folyamatos hozzáférésű
+protokoll. Az egyes hostok amint van mit küldeni, adni kezdenek. Ha
+ütközés történik, véletlenszerű ideig várnak, majd újra
+küldenek. A sok ütközés miatt a csatorna hasznos kihasználtsága
+18% körüli.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Ütemezett Aloha (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Ütemezett ALOHA esetén egy szinkronizációs jel segítségével a
+hostok ütemezik a küldés folyamatát. Az egyes hostok csak a
+diszkrét időszeletek elején adhatnak keretet. Az egyes hostok az
+ütközés bekövetkeztét a nyugtázó válasz hiányából
+állapítják meg. A módszer az egyszerű ALOHA-hoz képest
+kétszeres csatornakihasználtságot eredményez.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Vivő érzékeléses (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Vivő érzékeléses hozzáférés esetén az egyes állomások
+képesek „belehallgatni” a csatornába, hogy azon folyik-e éppen
+adatátvitel, és csak akkor kezdenek adásba, ha a csatorna szabad.
+Az ilyen hozzáférési módszereket Carrier Sense Multiple
+Accessnek, azaz Vivőérzékeléses Közeghozzáférésnek nevezzük.
+A CSMA-nak több hozzáférési változata létezik:<br/>
+-
+1-persistent CSMA esetén egy host, ha adni akar, folyamatosan
+figyeli a közeget. Ha a közeg szabaddá válik, azonnal adni
+kezd.<br/>
+- p-persistent CSMA esetén az előbbi módszer szerint
+járnak el a hostok, azonban a csatorna szabaddá válása esetén
+nem 1, hanem valamilyen p valószínűséggel kezd adni. Ha nem ad,
+akkor folyamatosan figyeli a csatornát, és a következő időrés
+elején (ha a csatorna szabad), megint p valószínűséggel kezd
+adni.<br/>
+- non-persistent CSMA esetén a host nem figyeli
+folyamatosan a csatornát. Ha a csatorna foglalt, véletlenszerű
+ideig vár, majd újra próbálkozik. Ha a csatornát szabadnak
+érzékeli, azonnal adni kezd.<br/>
+- O-persistent CSMA (bináris
+visszaszámlálás) esetén minden állomás kap egy várakozási
+időszeletet. Ha a csatorna szabaddá válik, minden állomás
+kivárja a neki szánt időszeletet, és akkor kezd adni, ha a
+várakozás alatt más állomás nem kezdett adni. Ha egy kör
+lezajlott, minden állomás előrébb kerül a sorban.<br/>
+<br/>
+<br/>
+
+</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>CSMA/CD (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Ütközés érzékeléses közeghozzáférés, amit az előbb
+bemutatott hozzáférési változatok valamelyikével párhuzamosan
+alkalmazhatunk. (Ethernet esetén 1-persistent CSMA). <br/>
+A hostok
+figyelik a közeget. Ha a közeg szabaddá válik, és van kiküldendő
+bit,a host adni kezd. Ha a bit kiküldése közben nem történik
+ütközés, kiküldi a következő bitet, amíg a teljes keret át
+nem haladt. Ha egy bit küldése közben ütközés történik, (a
+médiumról fogott jel nem egyezik meg a kiküldött jellel, vagy a
+közegen szokatlanul magas amplitúdójú jelek jelentek meg), a host
+továbbra is küldeni fog, amíg a minimális kerethosszt el nem éri
+a kiküldött adat, így minden host értesül az ütközésről.
+Ekkor a host egy ütközés jelet küld ki, mely felszólít minden
+hostot, hogy fejezze be a küldést. Ha egy host a próbálkozások
+maximális számát elérte, a kiküldendő keretet eldobja. Ha nem,
+véletlenszerű ideig vár, majd újra megkísérli a keret
+kiküldését.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Bináris visszaszámlálás (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A bittérkép protokoll nem hatékony, mivel minden küldés előtt
+szükséges egy „felmérés” futtatása. A bináris
+visszaszámlálás esetén minden hosthoz tartozik egy azonosító.
+Ha több host is egyszerre akar küldeni, bitenként elkezdik küldeni
+az azonosítójukat a közegre, a legmagasabb helyértékű bittől
+kezdve. Ezek OR kapcsolta állnak, amelyik állomások adott bitje
+kisebb értékű, kiesnek. A folyamat addig fut, amíg egy győztes
+nem kerül ki, aki adhat egy keretet. Így ütközés elkerüléses
+protokollt hoztunk létre.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; page-break-before: always">
+<i><u><b>SONET/SDH </b></u></i>
+</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Képességei, miért jobb mint a PDH (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az SDH a PDHhoz képest majd minden területen előrelépést jelent.
+A protokollkészlet viszonylag jól definiált, egységes, támogatja
+az optikai kábelek alkalmazását, OAM szolgáltatásokat nyújt
+(Operation, Adminisration and Management), ráadásul az Add- drop
+multiplexerek segítségével az adatfolyamok kivehetőek, és
+behelyezhetőek bármely ponton, anélkül, hogy a teljes
+adatfolyamot demultiplexelni kellene. Ezen kívül sokkal nagyobb
+sebességekre képes mint a PDH 4-es szintje, akár 10Gb/sig, optikai
+közeg használatával.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Architektúra, az elemek rövid leírása (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Egy SDH út két végberendezés között épülhet ki. Az út
+vonalakra bontható (két multiplexer között), az egyes vonalak
+pedig regenerátor szekciókra (szakaszokra) bonthatók (két
+jelismétlő között).<br/>
+A regenerátor szekciók a legkisebb
+managelhető szakaszai az útnak. Az egyes repeaterek, vagy
+jelismétlők feldolgozzák a jeleket, megvizsgálják, hogy
+történt-e  keretvesztés, jelvesztés, vagy kerethiba, majd a jel
+újragenerálásával képesek a jel kondicionálásra. Egy vonalat
+két olyan eszköz határol, melyek az egyes STSek adattartalmát is
+képesek feldolgozni. Képesek érzékelni a hibás blokkokat, és
+riasztásokat. A végberendezések SDH termináló multiplexerek,
+melyek a bejövő, alacsony bitsebességű vonalakat képesek a nagy
+bitsebességű SDH vonalakra multiplexelni.<br/>
+Terminál
+multiplexer: több lassú in -&gt; egy gyors SDH vonalra,
+STSre.<br/>
+Regenerator: SDH szinkron jel -&gt; SDH szinkron jel,
+kiszűrve a jel romlását, újragenerálva azt<br/>
+Transzponder:
+Bejövő SDH jelet más hullámhosszúságú jelként küldi
+tovább<br/>
+Add-Drop Multiplexer: Egy SDH csatornából kivon egy
+STS-vonalat, és egy másikat helyez a helyére (vagy üres
+csatornát).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Keretek (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Minden keret bájtos cellákból épül fel, melyek 9 sorból, és
+90, vagy több oszlopból állnak. Az első három oszlop minden
+keretben a SOH, amely az OAM információkat tartalmazza, illetve egy
+pointert, mely az adatblokk első cellájára mutat (abban az
+esetben, ha az adatok úgy érkeztek a multiplexerhez, hogy egy keret
+éppen kiküldés alatt volt. Ez a titka annak, hogy az SDH hogyan
+lehet képes bármilyen sebességű bejövő vonal SDH csatornára
+multiplexelésére. Ha egy STS csatornára több E vonal is
+multiplexelve van, az SOH tartalmazhat több pointert is, ezt
+virtuális mellékfolyónak nevezzük.) Az egyes keretek kiküldése
+mindig 125μs (az SDH teljesen szinkron működésű, a
+szinkronizáció a PRC-hez van hangolva). 
+</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Addicionális adatok (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az SOH addicionális adatok tartalmazzák: Keret illesztési
+szavakat, regenerátor szekcióhoz tartozó hibamonitorozáshoz,
+Szolgáltatás monitorozáshoz (teljesítmény figyelés) tartozó
+adatvonalakat, a végberendezések számára (felhasználónak), és
+az egyes szekció berendezések működéséhez, és
+kommunikációjához. Tartalmaz a multiplexelési szekcióhoz tartozó
+hibamonitorozási adatokat, szinkronizációs státusz adatokat. Ezen
+kívül, az addicionális adatok között találjuk a payload
+kezdetét jelző pointert, illetve pointereket is (virtuális
+mellékfolyó adatok).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>SDH topológiák (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az SDH használatakor az ADMek segítségével nagy átviteli
+kapacitású hálózatok alakíthatók ki, akár gyűrű, akár
+csillag, akár sín topológiák megvalósításával. lehetséges
+nagy sebességű PP kapcsolatok kiépítése is, esetlegesen DWDMmel.
+Gyűrű topológia esetén ADMekkel építhetünk gyűrűt, de
+építhetünk MUXok (terminál munltiplexerek) segítségével,
+ADMeket használva csomópontokként fa, vagy egyéb topológiákat
+is.<br/>
+<br/>
+<br/>
+
+</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; page-break-before: always">
+<i><u><b>OTN</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>SDH problémák, OTN megoldások(5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az SDHnak több problémája is van, többek között az egyes STS
+csatornák maximális 54 Mb/s sebessége miatt nagy a granualitása,
+az összes használt berendezés elektronikus, így a jeleket minden
+eszköznél teljesen ki kell fejteni, majd újragenerálni, ami az
+eszközök elektronikus mivolta miatt lassú, ezen kívül  alapból
+nem támogatja a DWDMet, ráadásul az OAM funkciók hiánya is
+problémát jelent (mivel a hálózatok ált. nem egy kézben vannak,
+szükséges lenne az út/vonal/szekció adatokon felül további
+managelési szolgáltatások átvitele is).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az OTN granualitása sokkal kisebb, az alap OTU csatorna 2,66Gbit/s
+sebességű, ez is durván négyszeresen nő minden lépésben. Az
+OTN hálózatokban lehetséges olyan kapcsoló, és jelerősítő
+berendezések alkalmazása, melyek nem dolgozzák fel elektronikusan
+a jelet. Az OTN ezen kívül támogatja a WDMet, mi több, előnyben
+részesíti az egyes λk túlzsúfolása helyett. Az OAM funkciókat
+ezen kívül egy Tandem Kapcsolat monitorozási lehetőséggel is
+kiegészíti (TCM), mely a vonali, és az út monitorozás között
+lehetővé teszi az egyes domaineken belüli teljesítmény
+monitorozást, és managelési lehetőségeket.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Hullámhossz forgalomirányítás (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A hullámhossz forgalomirányítás OXCk alkalmazásával valósítható
+meg. Egy OXC képes optikai úton egy bejövő optikai jelet egy
+másik kábelre, azonos hullámhosszon átvinni. Ha az OXC
+konverterrel is fel van szerelve, lehetséges a B optikai szálra
+akkor is rávinni egy jelet, ha a bejövő jel hullámhossza a kimenő
+kábelen már foglalt, azáltal, hogy a bejövő jel hullámhosszát
+egy, a kimenő kábelen nem foglalt hullámhosszra alakítja át.
+OXCck használhatók ADM-ekként is, tehát lehetséges egy adott
+hullámhossz leválasztása, majd azonos hullámhosszon egy új
+adatfolyam a kábelre helyezése.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>OTN felépítése (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az OTN két részből áll. Egy elektronikus, és egy optikai
+rétegből. Az elektronikus rétegben épülnek fel a keretek. A
+kliens felől érkező SDH, Ethernet, vagy bármilyen más keret egy
+OPU-t alkot. Ez az egység teljes egészében tartalmaz minden bitet,
+ami az OTN felé érkezik, legyen az egy SDH keret, vagy akármi. Az
+OPU (Optical Payload Unit) tartalmához hozzákapcsolódnak az
+addicionális bitek (úthoz tartozó OH), és egy ODU-t hoznak létre
+(Optical Data Unit). Az ODUhoz ezután csatolódnak az átvitelhez
+szükséges addicionális információk, és létrejön az OTU, azaz
+az Optical Transport Unit.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az OTU-kat egy Optikai csatornán vezetik át, több ilyen csatorna
+összefogásával, és egy felügyeleti csatorna hozzáadásval egy
+MultiplexelésiEgység (OMU)  jön létre, mely aztán létrehozza az
+OTMet, azaz egy alapcsatornát.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>OTN architektúra, OTN elemek (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az OTN hálózat a kliensek számára nyitott végekből,
+jelismétlőkből, OXC-kből, és ADMekből épül fel. <br/>
+A
+terminal equipmentek (Mux) a végfelhasználók felé nyitott
+berendezések, melyek képesek a megfelelő eljárásokkal létrehozni
+az OTMeket, legyen az SDH keret, videó jel, vagy bármilyen
+információ. Egyfajta keverékei az optikai, és elektronikus
+berendezéseknek, ha szükséges, képesek teljes hullámhosszok
+be-kivételére pl. videojelek esetén, de képesek akár csak a
+hullámhossz által nyújtott átviteli kapacitás egy részének
+kihasználásra is, egy Och felbontásával. <br/>
+A jelismétlők
+egyenként managelhetőek, képesek felismerni a hibákat, vagy
+jelszakadásokat, teljesítményük dinamikusan változtatható, és
+a teljes átvitt spektrum erősítését képesek elvégezni,
+méghozzá anélkül, hogy a jeleket elektronikusan fel kéne
+dolgozni.<br/>
+Az OXC-k az előbbihez hasonlóan képesek hullámhossz
+alapján kapcsolni, add-droppolni az egyes jeleket, elektronikus
+átalakítás nélkül, nagy sebességű átvitelt téve lehetővé.
+Az ezekkel a berendezésekkel létrehozott összeköttetések
+kapcsolt hálózatok, azaz nem csomagonként történik a routing,
+hanem az egyes OChkat irányítják a megfelelő irányba.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>OTN keret (10)<br/>
+<br/>
+</b></i>Az OTN keretek felépítése
+az SDH-éhoz hasonló. Egy OTM keret azonban 4 sorból, és 4080
+oszlopból áll. Az első oszlopokban  találhatóak az addicionális
+adatok, melyek az OTUhoz, ODUhoz, illetve OPUhoz tartoznak. Itt
+találhatóak továbbá a keret szinkronizációhoz tartozó adatok
+is. Az addicionális adatok között kaptak még helyet szabad
+felhasználású adatfolyamok, illetve a TCM információk 6 szintje
+is. Az addicionális adatok olyan információkat tartalmazhatnak,
+mint az előforduló hibák monitorozása, teljesítmény
+információk, és berendezések managelése. A keret végén
+előremutató hibajavításhoz szükséges bitek találhatóak (FEC).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; page-break-before: always">
+<i><u><b>802.3</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Címzés, keret, működésmód(20)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az IEEE 802.3, más néven Ethernet két részből tevődik össze.
+Az Ethernet foglalkozik a helyi hálózaton az LLCvel, illetve a MAC
+réteggel is. Utóbbihoz tartozik a fizikai közegre kivitt keretek
+felépítése, kezelése, az egyes hostok címzése, illetve maguknak
+a kereteknek a megcímzése.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az egyes Ethernet a keretek címzéséhez a MAC címet használják.
+Ez egy, a gyártók által a hálózati csatolóba „égetett”,
+egyedi azonosító, mely összesen 48 bit hosszúságú. Az első 24
+bit azonosítja a gyártót, a második 24 bit pedig egy a gyártó
+által az eszköznek adott egyedi azonosító szám. A MAC címek
+alapján nem lehetséges hierarchikus hálózati forgalomirányítást
+megvalósítani, azonban adott hálózati szegmensen belül megfelelő
+címzési lehetőséget nyújt. <br/>
+Minden Ethernet keret
+rendelkezik egy SOF mezővel, mely egy flag, jelzi, hogy egy keret
+kezdődik. Ezután közvetlenül a cél, majd a forrás cím (MAC
+címek), majd egy keret méret mező következik (Ethernet II
+esetében, 0600h felett átvitt protokoll azonosítója), majd a
+hasznos adat (ami minimum 48 bájt, maximum 1500 bájt, de jumbo
+keretek esetében akár 9000 bájt is lehet), majd egy FCS, keret
+ellenőrző összeg következik, melynek segítségével
+felderíthetők az átvitel közben keletkezett esetleges hibák.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az Ethernet CSMA/CD LLC-t használ. Az egyes állomások, ha adni
+akarnak, belehallgatnak a közegbe. Ha a közeg csendes, tehát éppen
+nincs adás, akkor azonnal adni kezdenek. Ha az adás eredménye
+ütközés, akkor az állomás a minimális kerethosszt elküldi,
+majd egy JAM jelzést. Ezután változó ideig várakozik, majd
+újraküldi a keretet. 16 sikertelen próbálkozás után a keretet
+kidobja. <br/>
+Az Ethernetek több variánsa is létezik,
+10Mb/s-10Gb/s-ig. A 10 Mb/s és annál lassabb Ethernet aszinkron
+működésű, minden keret kiküldésekor – feltéve hogy nem
+történt ütközés – egy szinkronizációs jelet küld ki, mely
+alapján a fogadó fél felkészülhet az adás fogadására, ezután
+küldi ki a keretet. Az ennél gyorsabb változatok szinkron
+működésűek. Half-duplex üzemmódban a minimális kerethossz
+100Mb/s-ig 48, afölött 64 bájt. 10Gb/s módban az Ethernet csak
+duplex üzemmódban működhet (tehát az ütközési tartományt nem
+lehet hubokkal, repeaterekkel megtoldani, egy kábelhez csak két
+eszköz csatlakozik, melyek egyidőben képesek mindkét irányban
+kommunikálni, így ütközés nem fordulhat elő. 10Gbit/s esetén
+az Ethernet már optikai szálakon működik.). A minimális
+kerethossz olyan hosszúságú, hogy ha egy eszköz elkezd küldeni,
+akkor a jelnek legyen ideje végigmenni a lehetséges legnagyobb
+ütközési tartomány teljes hosszán (a jel sebessége kb.
+20.3cm/nsec, de ehhez hozzáadódnak a jelismétlők/hubok
+késleltetései is), és ha ott ütközés történik, akkor az adó
+még a minimális kerethossz teljes leadása előtt érzékelje az
+ütközés bekövetkeztét (tehát a megrongált jel még a keret
+teljes leadása előtt vissza is érjen az adóhoz). Ezután a 32
+bites JAM jelet bocsátja ki az adó eszköz. <br/>
+A keretek
+kibocsátása között az adó fél mindig vár 96 bitnyi időt –
+interframe spacing – a lassabb eszközök kímélésére.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az Ethernet működésekor hibák fordulhatnak elő, melyek többek
+között lehetnek: túl hosszú, vagy túl rövid keret (jabber, ill.
+runt), FCS hiba, vagyis az adat nem felel meg a keretellenőrző
+összegnek, elrendezési hiba (nem megfelelően összeállított
+keret), esetlegesen ütközés, vagy az adó által nem érzékelt
+ütközés (kései ütközés).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az Ethernet nagy előnye, hogy képes automatikusan detektálni, hogy
+a fogadó eszköz milyen sebességű, illetve hogy milyen
+duplexitással működik, így lehetővé téve, hogy bármilyen
+sebességű interfészeket összeköthessünk.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Kapcsoló működése, szerepe (20)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A kapcsoló, vagy híd egy több interfészt tartalmazó,
+adatkapcsolati rétegben működő berendezés, melynek segítségével
+a helyi hálózat szegmentálható, azaz több ütközési tartomány
+hozható létre. Minden kapcsolóban található egy MAC cím
+táblázat, mely egy CAM memória. A kapcsoló a beérkező
+üzenetekből, és a rájuk érkező válaszokból képes
+„megtanulni”, hogy mely interfésze felé mely MAC című
+eszközök találhatók, így egyik portján beérkező kereteket
+mindig csak a megfelelő, cél MAC felé mutató porton engedi
+tovább, vagy, ha a cél MAC abban az irányban van, ahonnan a keret
+jött (tehát a forrás és a cél egy ütközési tart. van), a
+keretet eldobja. Magát a kapcsolót nem kell megcímezni, kizárólag
+akkor, ha azt felügyeleti célokból tesszük (ez azt is jelenti,
+hogy a forrás, és cél MAC címeket a kapcsoló nem cseréli ki,
+azaz adó és vevő fél számára transzparens). Mivel a MAC címek
+egyediek, és minden eszközhöz léteznek, ezért a hidak és
+kapcsolók működése általában a topológiától,
+konfigurációtól, és használt protokolltól független. Ezen
+berendezéseknek a lehető legnagyobb rendelkezésreállással kell
+rendelkezniük, és minimális hibaaránnyal kell a megfelelő
+irányba irányítaniuk a forgalmat, általában hardveresen.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A kapcsolók a hidakkal ellentétben mikro szegmentációra is
+alkalmasak, mivel nagy számú, és így portonként olcsóbb
+megoldást jelentenek, így lehetséges portonként egy-egy eszközt
+kapcsolni, ezzel teljesen megszüntetve a megosztott közegből
+származó, ütközésekkel kapcsolatos problémákat. A kapcsoló
+ebben az esetben minden kommunikáció esetén, minden keretet csak
+ahhoz az eszközhöz továbbít, amely számára a keret szól,
+dedikált kapcsolatot létre hozva forrás és cél között.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A kapcsolók belső működésük esetén két módon használhatják
+belső memóriájukat. Vagy port alapú memóriát használnak (tehát
+minden porthoz külön memória), ez azonban problémát okozhat egy
+nagy forgalmú kimenő port esetén, hisz a várakozási sor
+megtelése az egész forgalmat megfoghatja. A megoldás erre lehet,
+hogy közös memóriát használunk, ekkor minden, a memóriába
+eltárolt keret mellett el kell tárolni a hozzá kötődő portot
+is.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A kapcsolók három működési üzemmóddal rendelkezhetnek, attól
+függően, hogy a hálózati átvitel során mennyire szeretnénk
+őket bevonni a hibakeresésbe, illetve, hogy mennyire gyors működést
+várunk el tőlük (ez a kapcsolók teljesítmény tulajdonságaival
+is összefügg, és a hálózati körülmények függvényében
+határozandó meg). Tárol és továbbít üzemmódban a kapcsoló
+akkor küldi csak tovább a keretet, ha azt már teljesen beolvasta a
+bejövő portról, megvizsgálta hibamentességét, és hibátlannak
+találta. Ez a módszer elég lassú, azonban a kapcsoló nem küldi
+tovább a hibás kereteket. A kapcsoló képes a MAC címzés
+módszerének kihasználásával már azelőtt továbbítani a
+kereteket, hogy azokat teljesen beolvasta volna -&gt; ha megvan a
+cím, már továbbítható a keret (gyorstovábbítás). Ez a módszer
+nagyon gyors, ám fennáll a veszélye, hogy az ütközésekkor
+keletkezett „szemetet” is áthajtja magán, ezért a
+fragment-free továbbítás is megadható, ekkor legalább 64 bájtnyi
+(minimális kerethossz) adatot beolvas, és ha az megvan, akkor küldi
+tovább a keretet. lehetséges adaptív módban is működtetni egyes
+„áthajtós” kapcsolókat, így ha a bejövő porton túl sok
+hibát érzékel, gyorstovábbításról előbb fragment freere, majd
+tárol és továbbít módba képes átállni automatikusan.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A switchek ezen kívül konfigurálhatók keretek szűrésére is,
+így megadható, hogy mely MAC címeket engedélyezze, tiltsa, vagy
+hogy átengedje-e a többesküldéses, vagy broadcast címzésű
+kereteket. (Szegmentálja-e a broadcast-tartományt, vagy sem.)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; page-break-before: always">
+<i><u><b>Feszítőfa, VLAN</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>A VLAN jelentősége, működése (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A VLANok lehetővé teszik, hogy több, egymástól távol lévő
+hostot úgy foglaljunk egy logikai alhálózatba, hogy ahhoz külön,
+fizikailag ki kellene építenünk egy dedikált alhálózatot.
+Ezáltal könnyebbé válik az egyes alhálózatokhoz tartozó
+eszközök/munkatársak managelése, áthelyezése, nő a biztonság,
+és nagyban csökken a hálózat kiépítésével járó költség. A
+kapcsolók egyes portjait dinamikusan, vagy statikusan rendelhetjük
+hozzá egy (vagy több) VLANhoz, ezután csak az azonos VLANba
+tartozó eszközök/portok kommunikálhatnak egymással. A különböző
+kapcsolókon, de egy VLANba tartozó eszközök közötti
+kommunikáció a több VLAN információit egyazon kapcsolaton
+átvinni képes, kapcsolókat összekötő trönk portokon
+lehetséges. Azt, hogy egy csomag mely VLANhoz tartozik, a 802.1Q
+szabvány szerinti keret-jelölés teszi lehetővé. Az egyes VLANok
+közötti kommunikáció kizárólag forgalomirányító
+használatával lehetséges.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>A feszítőfa protokollok jelentősége (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A hálózat rendelkezésre állási ideje és megbízhatósága a
+hozzáférési rétegben is nagyon fontos tényező. Ennek
+biztosításának legegyszerűbb módja redundáns kapcsolatok
+létrehozása a kapcsolók között, melyek együttes használata
+azonban a második rétegbeli protokollok működéséből adódóan
+nem lehetséges. (TTL mező hiánya, logikai hierarchia hiánya, mely
+nélkül nehézkes lenne a forgalomirányítás, -&gt; üzenetszórási
+viharokhoz, többszörös kézbesítéshez, és a CAM táblák
+instabilitásához vezetnek.) A probléma megoldása, hogy egy gyökér
+kapcsolóból kiindulva fa szerkezetet hozzunk létre, a nem
+szükséges redundáns kapcsolatokat zárjuk le, és csak akkor
+nyissuk ki, ha az aktív vonal megszakad.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>STP működése (20)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az STP feladata, hogy egy olyan, megbízható működésű protokollt
+hozzon létre, amely:<br/>
+- minimális erőforrást igényel mind a
+kapcsolókon, mind az átviteli sávszélességből<br/>
+- bármekkora
+hálózaton stabilizálódjon az egyes kapcsolók túlterhelése
+nélkül<br/>
+- megszüntessen minden hurkot az aktív topológiában,
+melyet maga alakít ki<br/>
+- a hálózathoz adott hidak
+automatikusan konfigurálódjanak<br/>
+- a kialakított aktív
+topológia legyen megjósolható, és a management által
+befolyásolható</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Ehhez a hidaknak<br/>
+- kevés plusz számítási kapacitásra és
+memóriára,<br/>
+- híd azonosítóra, illetve módosítható
+prioritásra,<br/>
+- minden port számára egyedi azonosítóra,
+megadható prioritásra és költségre,<br/>
+- egy közösen
+használt, többes-küldésre szolgáló MAC címre van szükségük.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Minden kapcsolón párhuzamosan fut az STP. A hálózat beindításakor
+minden kapcsoló gyökérnek hirdeti magát, és BPDU információs
+csomagokat kezdenek küldeni egymásnak, mely tartalmazza
+távolságukat a gyökértől, saját prioritásukat, portjuk
+prioritását (illetve a gyökérnek hitt híd prioritását). Ha a
+csomag olyan porthoz érkezik, melynek azonosítója kisebb értékű,
+vagy prioritása nagyobb, az alacsonyabb prioritású küldő port
+lemond gyökér szerepéről. Mire a hálózat stabilizálódik,
+csupán egyetlen gyökér híd marad. Ezután dijkstra algoritmus
+alapján felépül egy feszítőfa szerkezet, mely a gyökér hídtól
+kiindulva mutat lefelé. Így, minden kapcsolónak lesz(nek) kijelölt
+portja(i), mely(ek) az adott szegmensből a gyökér felé vezető
+legrövidebb útvonal felé mutat(nak) –ezek az „ágak”, lesz
+egy gyökér portja, mely a kapcsolótól a gyökér felé mutat –
+„ez megy a törzs felé”, és lehetnek blokkolt alternatív
+portjai (redundáns kapcsolatok). Az egyes portok állapotai, attól
+függően milyen állapotában vannak az STP konfigurálásának,
+lehetnek hallgató, tanuló állapotban (konfiguráció alatt), vagy
+továbbító, esetleg blokkolt (alternatív) állapotban. (Persze,
+lehetnek tiltott portjai is egy kapcsolóak, ezeket adminisztratívan
+tiltotta le a managament.) <br/>
+<br/>
+A gyökér a hálózat
+stabilizálódása esetén bizonyos időközönként minden „ágon”
+frissítő BPDU-t küld végig. Ha egy kapcsoló nem kap ilyen
+frissítést, az előző frissítés lejárta után gyökérnek
+hirdeti magát. Minden esetben az a port válik gyökérporttá,
+ahonnan a frissítés érkezik, a többi port pedig kijelölt, vagy
+blokkolt állapotba áll át, ha az előző frissítés lejárt. Ha
+egy kapcsolón megváltozik egy port állapota (pl. hirdetés hiány
+miatt), akkor a gyökérporton át unicast módszerrel értesíti
+erről a gyökér kapcsolót, mely a következő frissítésben
+minden, az STPben részt vevő kapcsolót felszólítja, hogy CAM
+táblájuk elévülési idejét csökkentsék. (A topológia
+megváltozása esetén újra kell számítani a feszítőfát a
+hurkok elkerülése végett.)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>RSTP működése (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az RSTP sokkal gyorsabb konvergálást tesz lehetővé a topológia
+megváltozásakor, mint az STP (előbbi néhány sec, utóbbi akár
+fél perc). Ezt több megoldás együttes alkalmazásával éri el,
+melyek a következők:<br/>
+- kevesebb port állapot van (blokkolt,
+tanuló, továbbító)<br/>
+- a portok típusai megváltoznak, az
+alternatív mellett tartalék port is létezik (ez egyazon hálózatba
+vezet, mint adott szegmens kijelölt portja), a kijelölt, és gyökér
+portok szerepe marad.<br/>
+- az egyes kapcsolók nem csak a gyökértől
+érkező BPDUkra reagálnak. Ha topológia változás történik, a
+TC-t jelző kapcsoló minden portján kiküldött frissítése az
+egész hálózaton végigfut, és azon kapcsolók, melyek a
+frissítést megkapják, tovább küldik azt, CAM táblájukat
+kiürítve azon portokon, melyeken továbbították a frissítést.<br/>
+-
+lehetséges interfészek határ interfészként való megjelölése
+(automatikusan, vagy manuálisan). Ezen interfészek nem tartoznak
+bele a topológiába, ha megszakadnak, nem indukálnak TC hullámot,
+és a kapcsoló beindításakor a tanuló állapot kihagyásával
+egyből továbbító módba kapcsolhatnak (ezek azok a portok, melyek
+pl. PCkhez vezetnek).<br/>
+- Az RSTP időzítők helyett „kézfogás
+hullám” módján építi fel a fa szerkezetet, lépésenként a
+gyökértől az utolsó kapcsolóig. Ennek során egy híd
+felajánlja, hogy kijelölt portot szolgáltat egy alatt lévő
+kapcsolónak, megadva prioritását, és gyökértől való
+távolságát. A híd, melynek ajánlatot tettek, minden portját
+lezárja, megvizsgálja az ajánlatot, majd visszaküld egy
+egyetértő, vagy ellentmondó nyugtát. Ha egyetért, akkor a
+felajánló port kijelöltté, a fogadó gyökérré változik, és a
+hullám mehet a következő kapcsolóhoz a kijelölt portokon. Ha
+elutasítja az ajánlatot, az azt jelenti, hogy rendelkezik egy jobb
+útvonallal a gyökér felé, ekkor a felajánló felé vezető utat
+lezárja, és alternatív útvonalként jegyzi.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; page-break-before: always">
+<i><u><b>WiFi</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Fizikai közeg (Szórt spektrum, FHSS, DSSS, álvéletlen
+sorozatok hatása) (5)<br/>
+OFDM (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Azon eszközök, melyek az elektromágneses tartományban,
+szabadhullámú összeköttetések segítségével működnek, több
+veszélynek is ki vannak téve, többek között egyszerűen
+lehallgathatóvá válnak nem kívánatos személyek által, másfelől
+nagyobb problémát jelentenek a más forrásból származó
+elektromágneses zavarok, zajok. További problémát jelenthet a
+közös közeg megosztása, illetve a felületekről visszaverődő
+többutas terjedés kiküszöbölése is. 
+</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Ezen problémákat úgy próbálják orvosolni, hogy a jeleket nem
+egy, keskeny frekvenciasávban adják, hanem megpróbálják egy
+szélesebb spektrumon „szétkenni”. Ennek módszerei az FHSS,
+DSSS, és az OFDM.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+FHSS alkalmazása esetén álvéletlen sorozatokat állítanak elő,
+melynek mentén az adó és a vevő folyamatosan (akár
+másodpercenként 1600 alkalommal – BT) váltanak frekvenciát egy
+bizonyos frekvenciasávon belül. Az így előállított kommunikáció
+viszonylag védett a keskeny hullámhossz tartományban jelentkező
+zavarokkal szemben, nehezebben lehallgatható, és ha két adó-vevő
+pár egymással nem ütköző szekvencia alapján kommunikál, akkor
+párhuzamosan is folyhat a kommunikáció.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+DSSS alkalmazása esetén az adatbitek egy nagy sebességű
+álvéletlen sorozattal vannak kizáró vagy kapcsolattal összefűzve,
+és az ennek eredményeképp létrejövő bitsorozatot QPSK, vagy
+BPSK fázis modulációval viszik fel a szinuszos vivőhullámra.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+OFDM használata esetén a kommunikációs csatorna számára
+fenntartott frekvenciasávot alcsatornákra bontják, melyek
+nincsenek átfedésben egymással. Ezután a kiküldendő
+adatfolyamot szétbontják, és minden csatornán az adatfolyam egy
+részletét viszik át, lassú átmenettel, így egy bit hosszú
+ideig van adásban, és hosszúak a szünetek is. Így könnyen
+kiküszöbölhető a több utas terjedésből származó hiba
+(ilyenkor két helyről eltérő időben érkezik ugyanaz a jel,
+interferenciát, okozva… gyakorlatilag magával ütközik a jel).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>WiFi előnyei, hátrányai (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A WiFi előnyei: olcsó, jól skálázható, olcsón üzemeltethető
+és karbantartható infrastruktúra, olyan helyen is felállítható,
+ahol nagyobb fizikai beruházásra nincs lehetőség. Szabad
+barangolás lehetősége, a szolgáltatás a lefedett területen
+bárhol elérhető. Hátrányai, hogy nem biztonságos, és a
+biztonságot nem is lehet szavatolni, vannak olyan helyek ahol nem
+telepíthető, átviteli sebessége viszonylag alacsony, érzékeny a
+zajokra illetve nagyobb méretekben e mögé is kell egy fizikai
+háttér.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>WiFi elemek, keretek, prioritás kezelése (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A WiFi rendszer kiépítéséhez vezetékmentes hálózati
+adapterekre van szükség a csatlakoztatni kívánt eszközökön
+(nem mobil eszközökön plusz befektetést jelenthet). Szükség van
+hozzáférési pontokra, melyek az eszközök számára csatlakozási
+pontot jelentenek (BSS), ezekből nagyobb lefedettség eléréséhez
+háttérhálózat használata mellett több is felszerelhető. A
+hálózatokban ezen kívül használhatók még vezeték nélküli
+hidak is, melyek nagyobb távolságok áthidalását teszik lehetővé
+vezetékmentes vonalon keresztül.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A WiFi keretek a következő mezőkből épülnek fel:<br/>
+- FC,
+mely változó információtartalommal bírhat (verziószám,
+forrás-cél, Energiagazdálkodás, keret típusa, altípusa, stb.)<br/>
+-
+Időtartam/ID, az adás számára fenntartott időtartam, vagy
+azonosító<br/>
+- Címmezők, melyek a kommunikációban részt vevő
+eszközök MAC címeit tartalmazza (forrás, Cél, köztes APk)<br/>
+-
+Szekvenciaszám, mely az adatkeret sorszáma, a keretduplikáció
+megakadályozására<br/>
+- Adatok<br/>
+- FCS, keret ellenőrző
+összeg.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Prioritási szintek:<br/>
+-SIFS – Adatküldés közbeni várakozási
+idő, pontosan annyi idő, amíg az adó vevő módba vált, hogy a
+nyugtát megkapja.<br/>
+-PIFS – SIFSnél hosszabb. Ha az adó nem
+ad, akkor az AP ezalatt átveszi az írányítást a hálózat
+felett.<br/>
+-DIFS – PIFSnél hosszabb időtartam. Az ilyen módba
+állított eszközöknek az ehhez tartozó időtartamig tartó csend
+után szabad adniuk. Általában új adatok küldése előtt.<br/>
+-EIFS
+– ha ütközés történik, akkor DIFS helyett ennek, kissé
+hosszabb időtartamát kell kivárnia az eszköznek.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Logikai Architektúrák (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A WiFi többféle logikai architektúra formájában is működhet.
+BSS mód esetén (Basic Service Set – Alap szolgáltatás készlet)
+egy AP infrastuktúra módban üzemel. Ez azt jelenti, hogy egy
+fizikai hálózat kiterjesztéseként egy AP egy adott terület
+lefedésével hoz létre vezetékmentes hálózatot. A BSSbe az AP,
+és az AP irányítása alatt állóeszközök tartoznak. (A BSS
+által lefedett terület a BSA) A BSS a vezetékmentes LAN
+alapköve.<br/>
+Több BSS összekapcsolásával egy vezetékes
+backbone segítségével ESS (Extended Service Set) hozható létre,
+azonban a különböző BSSsek között a szabad átjárás a 802.11
+alap felépítése mellett nem megoldott.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A BSSsek mellett lehetséges a WiFit egy másik üzemmódban is
+futtatni. Ezt IBSSnek nevezzük, vagyis Independent BSSnek. Ezt az
+üzemmódot AP és háttér hálózat nélkül is megvalósíthatják
+vezeték nélküli csatolóval rendelkező eszközök, egyfajta
+Ad-Hoc, Peer-to-Peer hálózatot hozva létre.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>MAC szolgáltatások (problémák, megoldások) (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A WiFi esetén a MAC réteg felelős az adatok címzéséért, a
+keretek létrehozásáért, a keretek átvitelééért (MSDU csere),
+a biztonsági szolgáltatások biztosításáért (LLC számára
+transzparens titkosítási eljárások, pl. WEP, hitelesítés, és
+hálózat megbízhatósága), illetve az MSDU-k sorbarendezéséért
+(uni/multi/broadcast). – <i>ez a rész számomra rejtély,
+semmilyen forrást nem találtam ezekről.</i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Problémák: rejtett állomás problémája. Ha van két állomás,
+melyek egymás hatósugarán (csillapítás miatt) kívül esnnek, ám
+közöttük van egy harmadik, akkor lehetséges az, hogy az első két
+állomás úgy küld egyszerre a harmadik felé, hogy annál ütközés
+történjen, mindez anélkül, hogy az első két állomás ezt
+érzékelné.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Ennek megoldására vezették be az RTS/CTS management kereteket. Ha
+egy állomás adni akar, RTS keretet küld. Az első két állomás
+RTSeit veszi a harmadik, eldönti, melyik adhat először, annak
+számára CTS-t küld vissza, így nem történik ütközés. A
+módszerre, ha minden állomás minden állomást lát, vagy ha kevés
+ütközés történik, ált. nincs szükség. 
+</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; page-break-before: always">
+<i><u><b>BlueTooth</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Szerepe, jellemzői (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A Bluetoooth egy 2.4Ghzes tartományban működő, kis hatótávolságú,
+alacsony fogyasztású protokoll, mely kis sávszélesség mellett
+(700kbps) képes hang (SCO) és általános adat (ACL), illetve még
+egy rakás más protokoll kereteinek átvitelére, közvetlenül
+eszközök között (önmagának épít infrastruktúrát, nem
+szükséges háttér).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Pikóhálózat (5)<br/>
+Szerepkörök, működési módok (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A Bluetootht futtató, aktív eszközök mesterek, vagy szolgák
+lehetnek. Egy mester felépíthet egy pikóhálózatot, mely a mester
+hatósugarán belül maximum 7 aktív eszköz által jöhet létre.
+(3 bites AMA). A pikóhálózathoz tartozhatnak 8 bites PMAval
+azonosított, energiatakarékos üzemmódban lévő parkolt eszközök
+is. (A készenléti állapotban lévő eszközöknek nincs címe.)
+Egy pikóhálózzatban csak egy mester lehet, de egy szolga tartozhat
+több pikóhálózatba is, illetve a pikóhálózatok között
+információ vihető át ezen eszközök által. 
+</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Pikóhálózat működése, állapotok (25)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A pikóhálózat létrehozása előtt minden eszköz készenléti
+állapotban van. Ha egy eszköz létre akar hozni egy pikóhálózatot,
+kérdezősködni kezd. Ha vannak, akik válaszolnak IDjükkel, akkor
+az eszköz mesterré válik, a hozzá kapcsolódó, IDjükkel
+válaszoló eszközök számára kioszt egy-egy AMA címet (a 7ből),
+ők a mester szolgáivá válnak. A mester az aktív eszközökkel
+szinkronizálja az FHSS szekvenciát, és megkezdődhet az adatcsere
+ACLek, SCOk, vagy egyéb keretek által. Aktív állapotban a mester,
+és a szolgák hallgatnak, adnak, és vesznek. Ha egy eszköz nem
+vesz részt a kommunikációban, parkoló, vagy készenléti
+állapotba válthat lekapcsolódás útján.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az aktív eszközök számára is elérhetőek alacsony fogyasztású
+állapotok. Ilyen a figyelő állapot, ekkor az eszköz, egy a
+mestertől kapott időbeállítás alapján ritkábban figyel. Másik
+ilyen állapot a tartó, ebben az esetben a szolga csak az SCO
+keretek forgalmazását folytatja. Ha egy eszköz parkoló állapotba
+kerül, AMA címét elengedi, de az FHSS szekvenciát frissíti, és
+időnként figyel, hogy újra szükség van-e rá. (pl. ébresztő
+jelre).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; page-break-before: always">
+<i><u><b>Hálózati réteg</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Feladata, elemei (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A hálózati réteg feladata a hálózati eszközök logikai címzése,
+hálózati hierarchia kialakítása, és ezen címzés alapján a
+hálózatok és alhálózatok közötti csomag alapú
+forgalomirányítás. Az IP, illetve a hálózati réteg feladata a
+második réteg-beli keretek IP csomagokba foglalása, megcímzése.
+Egy hálózati réteg-beli rendszer elemei a forgalomirányítók,
+melyek csomag alapú, IP alapú forgalomirányítást végeznek
+valamilyen forgalomirányítási protokoll, vagy adminisztratívan
+megadott szabályok alapján, illetve maguk az állomások, melyek
+egyedi IP címmel rendelkeznek, és a forgalmat generálják (Ez a
+forgalom lehet unicast/multicast).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>IP (csomag, címzés, elemei) (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az IP alapjában véve egy legjobb szándék szerinti átvitelt
+lehetővé tevő protokoll (megbízható kapcsolat kiépítése csak
+felsőbb rétegek szolgáltatásaival lehetséges). Az IP csomagok
+lehetnek management célúak (pl. ICMP, IGMP többesküldési
+viszonyok kialakítására, stb.), általános forgalom (pl. TCP,
+vagy UDP protokollok beágyazására). Az IP működéséhez egyéb
+csomagtípusok is tartozhatnak, melyek magának a protokollnak a
+működéséhez szükségesek, ilyenek az ARP, vagy az RARP, melyek a
+MAC címek, vagy IP címek kiderítésére szükségesek, ha csak az
+egyiket ismerjük.<br/>
+Magának az IP címzésnek a kialakítása
+egy logikai címzési rendszer, mely lehetővé teszi hierarchikus
+címzés megvalósítását. Ez nem csak abban nyilvánul meg, hogy a
+hálózati azonosító, és a hostok azonosítója elválik, de
+hálózatok felépítése is lehet hierarchikus (hálózat a
+hálózatban -&gt; alhálózatok hierarchiája), lehetővé téve a
+címek aggregálását, és a forgalomirányítás
+optimalizálását.<br/>
+Fontos elemei a hálózatnak a
+forgalomirányítók, melyek minden áthaladó IP csomag esetén
+egyedi döntést hoznak annak irányításáról, általában a cél
+cím alapján, de a használt forg. irányítási algoritus alapján
+figyelembe vehetik az egyes vonalak áteresztőképességét,
+megbízhatóságát, költségét, a cél távolságát, stb.<br/>
+<br/>
+<br/>
+
+</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az IP csomag felépítése:<br/>
+- Verziószám (IPv4, vagy IPv6)<br/>
+-
+Fejléc hossza (20-24 bájt)<br/>
+- ToS – prioritás, késleltetés,
+megbízhatóság, költség, stb. (Elsősorban PHB QoShez)<br/>
+-
+Csomag hossza – max. 64KB, ált 1,5KB<br/>
+- Azonosító – Arra
+az esetre, ha a csomagot darabolni kéne, mert nagyobb, mint az adott
+kapcsolaton meghatározott MTU- (maximum transfer unit). Ezt
+általában nem engedélyezik, mivel ha a darabolt csomagok egy
+részlete elveszik, az egész csomag, és átvitel feleslegessé
+válik. Ezért a darabolandó méretű csomagokat a forgalomirányítók
+általában eldobják.<br/>
+- Jelző flagek – nem darabolható, nem
+utolsó darab, stb.<br/>
+- TTL – hurkok elkerülésére
+meghatározva van a maximális ugrásszám, amit a csomag megtehet.
+Ezt a mezőt használja a traceroute parancs is (fokozatosan növeli
+1-&gt;max ugrások számáig a cél felé küldött ICMP üzenetek
+élettartamát)<br/>
+- Átküldött protokoll (ICMP, TCP, UDP, OSPF,
+stb.)<br/>
+- Fejléc FCS (igazából szükségtelen, az alsóbb
+rétegek megoldják)<br/>
+- Opciók (pl. laza/szigorú
+forgalomirányítás, útvonal naplózás, időbélyeg)<br/>
+- Adat
+mezők</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Cím osztályok, alhálózatok, CIDR, Hierarchikus
+forgalomirányítás (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A cím osztályok az IPv4 elterjedésekor voltak fontosak, ekkor még
+ezek alapján történt a forgalomirányítás, és ezeket osztották
+ki felhasználásra. Az ezekhez tartozó hálózati maszkok:
+255.0.0.0 (A, bináris 0-val kezdődik), 255.255..0.0 (B, bináris
+10val kezdődik). 255.255.255.0 (C, bináris 110-val kezdődik) –
+D, E osztályokat többesküldésre, és kutatási célokra tartják
+fenn. A hálózati maszk adja meg, hogy mely bitek jelölik a
+hálózatot, és mely bitek jelölik az egyes hostokat. Mivel az A,
+és B osztályú címek például gigantikus címtartományokat
+jelölnek, ezeket fel lehet osztani alhálózatokra azáltal, hogy a
+hostokat jelölő bitek közül is rendelünk biteket hálózat (ez
+esetben alhálózat) azonosítására.<br/>
+Eredetileg a routerek
+csak IP osztályok alapján voltak képesek a forgalomirányításra
+(tehát a címosztály alapján feltételezték a maszkolást,
+alhálózatokra bontás esetén nem voltak használhatóak, nem is
+küldték el a maszkot a frissítő adatokkal), majd ez a CIDR-el
+megváltozott, az irányító protokollok maszk+cím alapján
+irányítanak (ez lehetővé teszi IP címek aggregálását is), nem
+veszik figyelembe a címosztályokat. (folytonos C osztályú
+hálózatok összefoghatók egy magasabb címbe). (Ennek fejlettebb
+változata a VLSM, amikor nem csak azonos hosszúságú alhálózatok
+használhatók irányítás esetén (pl RIPv2, hanem tetszőleges
+hosszúságú maszkolás is megengedett).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>ARP, ICMP (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Két host közötti IP alapú, hálózaton belüli kommunikációhoz
+szükség van mind az IP címre, mind a MAC címre. Ha egy eszköz
+ismeri a cél IP címét, de nem ismeri annak MAC címét, akkor ARP
+kérést küld ki, mely tartalmazza a forrás MAC címét, IP címét,
+illetve a cél IP címét. Ez az üzenet üzenetszórásos formában
+(„csupa F”) kerül ki a helyi hálózatra. Az az eszköz válaszol
+a kérésre, melynek IP címe megegyezik a keresett IP címmel. Így,
+a „kérdezősködő” eszköz a válaszból képes megállapítani
+a keresett MAC címet, és megkezdődhet a kommunikáció. ARP
+használatára lehet szükség például abban az esetben, ha egy
+host ismeri a helyi átjáró IP címét, ám MAC címét nem, vagy
+ha egy forgalomirányító először próbál meg információt
+cserélni egy szomszédjával. Az ARPnek létezik egy inverz
+változata is (RARP), mely esetben a MAC cím IP címre feloldása a
+cél.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az ICMP üzenetek alapvetően management célokat szolgálnak, és
+felhasználhatók a hálózat megbízhatóságának, sebességének
+mérésére, illetve a csomagok TTL mezőjének használatával
+lehetővé válik a hálózati elemek felfedezése két pont között.
+Az ICMP üzenetek kérés-válasz alapúak, és minden hálózati
+eszköz képes őket lekezelni (feltéve, hogy érvényes IP címmel
+rendelkeznek, és az ICMP csomagok használata engedélyezett). Az
+ICMP csomagok nem generálódnak újra, ha elvesznek. A leggyakrabban
+használt ICMP üzenetek az echo-request és az echo-reply.
+(Visszhang kérés, és visszhang válasz, kapcsolat meglétének
+ellenőrzésére.) Az üzenetek eredménye sokféle hibaüzenetet
+adhat meg, attól függően, hogy miért nem sikerült elérni a cél
+hálózatot. (protokoll hiba, tiltott az ICMP, elérhetetlen a
+hálózat, vagy maga a host, stb.)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Forgalomirányító szerepe, működése (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A forgalomirányító alapvető feladata, hogy egy beérkező csomag
+IP fejlécének cél címe alapján, egy valamilyen módon
+forgalomirányítási információkkal feltöltött táblázat
+(irányítótábla) szerint döntést hozzon, hogy az adott csomagot
+mely interfészén küldje tovább a cél felé.<br/>
+A beérkező
+csomag IP fejléce több féle címet is tartalmazhat. Ha a cím a
+router saját címe, akkor a router a csomagot feldolgozza. Ha a
+csomag cél címe a router interfészének saját hálózatában van,
+de nem a router címe, akkor figyelmen kívül hagyja. Ha ezen
+kritériumoknak nem felelt meg, további vizsgálat következik. A
+csomag cél címével való teljes egyezést keres az
+irányítótáblában, ha megvan, a táblában jelölt következő
+ugrás felé küldi tovább (egy-egy cél bejegyzés tartalmazza a
+cél címet, az oda vezető következő ugrás logikai és fizikai
+címét, illetve egyéb statisztikai információkat). Ezután cél
+hálózati cím szerint keres egyezést, (leghosszabb egyezés elve)
+illetve, ha nincs egyezés, de van beállítva alapértelmezett
+útvonal, akkor arra küldi tovább a csomagot. Amennyiben nincs
+egyezés, és nincs beállítva alapértelmezett útvonal sem, a
+csomagot eldobja, és a forrás számára egy ICMP echo reply
+csomagot küld, destination unreachable üzenettel.  A
+forgalomirányítóknak további feladata lehet az irányítótábla
+dinamikus feltöltéséhez használt protokoll futtatása, mely
+lehetővé teszi, hogy a rendszergazda minimális közreműködése
+mellett a routerek dinamikusan felfedezzék a hálózatot, és
+útvonal információkat cseréljenek.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; page-break-before: always">
+<i><u><b>IPv6 – Többesküldés</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>IPv6 előnyei, címzés, csomag (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az IPv6nak az IPv4el szemben rengeteg előnye van. Elsősorban
+előnye, hogy megoldja az IP címek fogyása által létrejött
+problémát, mivel 32 helyett 128 biten ábrázolja az IP címeket,
+lehetővé téve minden eszköz egyedi, globális címmel való
+ellátását. (A következő jó pár évre biztosan.) Ezen kívül
+nincs fejléc ellenőrző összeg, darabolás, és a fejléc hossza
+fix, 64 bites. A fejlécet nagyban egyszerűsítették, a fejléc
+mezői: verzió (IPv6), forgalom típusát jelző címke (QoS
+célokra), Folyam címke (Folyam azonosításra), adat hossza (max
+64KB, de van Jumbo lehetőség), Következő fejléc típusa, Hop
+limit (vagyis TTL), illetve egyéb opcionális elemek (routing, host
+felőli darabolás, hitelesítés, titkosítás, egyéb.). A 128
+bites címek ábrázolás 8 16 bites hexa számként történik. Ha
+sok 0 van egymás mellett, egy blokkban, azt címenként egyszer
+::-al jelölhetjük. Az egyes 16 bites részek vezető 0-i szintén
+elhagyhatók.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Állapotmentes automatikus konfiguráció (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az állapotmentes automatikus konfiguráció feladata, hogy külső
+beavatkozás nélkül, PnP módon konfigurálja egy eszköz hálózati
+csatolóinak címét (link-local address). Ha nincs router beállítva,
+vagy globális címek vannak előre konfigurálva, akkor csak egy
+helyi, link-local címet hoz létre. Ezt a címet a link-előtag,
+illetve saját interfészének MAC címének segítségével hozza
+létre. Miután MAC címének közepére beszúr egy csupa F-ből
+álló oktettet, és ezt az IPv6 címének alsó 64 bitjére
+helyezte, behelyezi a link-local azonosítót a felő 64 bitre.
+Ezután a szomszéd felderítési protokoll segítségével
+felderíti, hogy címe egyedi-e. Először csatlakozik a solicitated
+host csoporthoz (helyi hostok), illetve az all-nodes csoporthoz (ez
+minden helyi eszközt lefed), és saját címét meghatározatlannak
+jelölve kéréseket (neighbour solicitations) küld a meglévő
+hostoknak. Ezek saját címeiket használva forrás címként
+válaszolnak a kérésre (Neighbour Advertisements). Ha az eszköz
+saját forrás címével megegyező forrásról érkezik válasz,
+akkor címe nem egyedi, és újragenerálja azt.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az eszközök képesek ezen kívül globálisan routolható címet is
+készíteni maguknak, ekkor a hálózati azonosító rész 64 bitjét
+egy megfelelően konfigurált routertől kell lekérdezniük (router
+solicitations), alsó 64 bitjüket pedig MAC címükből generálják
+az előbbi módszerrel. 
+</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Többesküldés, jelentősége, megoldások (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A többesküldés IPv6 alatt a különböző scopeokban létrehozott
+multicast címeknek hála már nem jelent problémát, azonban IPv4
+esetén a multicast megvalósítására speciális routing és
+protokollok szükségesek, illetve a routereknek maguknak is többlet
+terhelést okozhat. Azonban, a többesküldésnek nagy előnye, hogy
+a forrásnak elegendő csupán egyszer kiadni egy üzenetet, azt
+később maga a hálózat fogja sokszorosítani, és eljuttatni azon
+hostoknak, melyek igénylik, ezáltal dinamikus, kevés konfigurációt
+igénylő, és a hálózatot kevésbé terhelő megoldás, mint
+minden host részére unicast üzenetek küldése. Tipikusan ilyen
+üzenetek a videokonferenciák, TV közvetítések, fájl terítés,
+VoD.<br/>
+Magának a többesküldésnek a megoldáa lehet Alkalmazás
+szintű, IP fölötti, ebben az esetben azonban nem használjuk ki a
+többesküldés lényegét, tehát nem maga a hálózat fogja
+sokszorosítani az üzenetet. A valódi multicast IP szintű, és
+lehet tetszőleges forrású, szűrt forrású, vagy forrás
+specifikus (ASM, SFM, SSM).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+ASM használata esetén hostok egy csoportba rendelhetők. A
+hostoknak elég tudniuk a multicast címet, és arról vehetnek
+üzenetet, illetve forgalmazhatnak is rá üzenetet, bármikor
+kiléphetnek, és bármikor csatlakozhatnak. Jól skálázható, és
+viszonylag sávszélesség kímélő megoldás, videokonferenciák
+lebonyolítására, tipikusan UDP-t használva. Ha egy eszköz
+szeretne csatlakozni egy multicast csoporthoz, azt tipikusan IGMPv3
+üzenetekkel teszi (vagy MLDvel IPv6 esetén)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+SFM esetén egy forrás lista van, mely tartalmazza, hogy a
+csoportban mely eszközök adthatnak adatot, de tetszőleges fogadó
+fél lehet.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Utóbbi igaz az SSM-re is, azonban itt csak egyetlen adó eszköz
+lehet.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Működése egy példán keresztül (IGMP is)(15)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Egy hálózatban a többesküldés kialakításához a routereknek
+egy fa szerkezetet kell létrehozniuk. Ezt RPB (Reverse Path
+Broadcasting) segítségével teszik meg. Ha egy router ismeri az
+útvonalat a forrás felé, és attól multicast üzenetet kap,
+feljegyzi, hogy az üzenetet melyik portján kapta. Ha a port
+megegyezik a forrás felé vezető legrövidebb útvonallal, akkor a
+csomagot megtartja, egyébként eldobja (illetve a kezdeti fa
+szerkezet kialakításakor minden portján, -kivéve azt ahonnan az
+üzenetet kapta – tovább is küldi. A legrövidebb útvonal függ
+a használt irányító protokolltól, és beállításoktól). Így,
+elméletileg nincsenek hurkok, és a többesküldés csomagjainak
+útiránya innentől megegyezik a forgalomirányítás útvonalaival.
+Ha azonban a forrástól a célig és vissza nem ugyanaz az útvonal
+érvényes (költségek pl.) akkor link-állapotok managelésére van
+szükség. Amennyiben egy levél, tehát a vonal végén lévő
+forgalomirányító IGMP által nem ismer olyan rá csatlakozó
+hostot, melynek kellene a multicast csomag, nem is továbbítja
+azokat (TRPB).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A forgalomirányítók a rájuk csatlakozó, hálózatokba
+periodikusan IGMP kérdés üzeneteket broadcastolnak, a csoport
+tagságokkal kapcsolatban, melyre az eszközök csopottagságukkal
+válaszolnak (rövid IGMP válasz, gyakorlatilag egy kis fejléc,
+FCS, és egy multicast cím). A router csak azon interfészein küldi
+ki a multicast csomagokat, ahol igény van rá.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az RPM (Reverse Path Multicasting) együtt működik az IGMPvel.
+Először minden levél ágig TRPB segítségével el van küldve az
+első csomag. Ha egy levél forgalomirányítóhoz nem tartozik
+senki, akinek kéne a csomag (IGMP), a felette állónak prun
+üzenetet küld, melynek hatására felé a felette lévő router nem
+fog több multicast üzenetet továbbítani. A prun üzenet
+végigszalad felfelé az ágon egészen addig, amíg nincs olyan
+router, mely igényt tartana a csomagra. Ha egy állomás mégis
+csatlakozni szeretne egy csoporthoz, azt graft üzenettel teheti meg,
+mely a prunhoz hasonlóan szalad fel az ágon, és hatására a host
+felé megint elindul a multicast csomagok áramlása.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; page-break-before: always">
+<i><u><b>Forgalomirányítás</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Statikus vs. Dinamikus (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A forgalomirányítás szabja meg azokat a szabályokat, melyek
+alapján az egyes routerek meghatározzák a csomagok küldésének
+irányát. Statikus forgalomirányítás esetén ezen szabályokat
+maguk a rendszergazdák adják meg. Ebben az esetben a konfiguráció
+(mint neve is mutatja) erősen statikus lesz, nem reagál a hirtelen
+a fizikai topológiában bekövetkező változásokra, azonban jól
+definiált lesz, pontosan meghatározható, és managelhető,
+ráadásul nagyon gyors is, hiszen semmilyen plusz terhelést nem ad
+a routernek. <br/>
+Azonban, konfigurációjához pontosan meg kell
+ismernünk a hálózatot, és annak működését, ezért általában
+véghálózatokban használják, illetve olyan helyeken, ahol éles
+szabályok vannak a forgalom irányítására. Fontos szerepe van még
+az alapértelmezett útvonalaknak, melyeket szintén statikus módon
+adunk meg.<br/>
+Dinamikus forgalomirányítás esetén az irányító
+protokollok segítségével általában egyszerűbb a hálózat
+konfigurálása, gyorsan képes reagálni a fizikai topológia
+változásaira, azonban kevésbé skálázható megoldás, nem
+garantált a hurokmentesség, illetve a hálózat konvergenciája.
+Ezen kívül, többlet terhelést jelenthet a routernek. Olyan
+esetekben érdemes alkalmazni, ha fontos a nagy rendelkezésre állás,
+nincsenek túlságosan éles szabályok, és nem okoz problémát a
+routereknek a protokollok által adott többlet terhelés.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Forgalomirányító protokollok fajtái, ezek összevetése,
+metikra, konvergencia (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Alapvetően két típusuk létezik, IGP, és EGP. Az IGP protokollok
+adott autonóm rendszeren (AS) belül működnek, vagyis egy adott
+internetszolgáltató, egyetem, cég hálózatán beül. Ezen
+forgalomirányító protokollok feladatai, hogy az azonos protokollt
+futtató eszközöktől fogadják és feldolgozzák az információkat,
+legyen egy eljárásuk, melynek segítségével a szomszédot
+értesítik ha valamilyen változást érzékelnek, van egy
+eljárásuk, melynek segítségével megállapítják a
+legoptimálisabb útvonalakat, és kell valami, ami reagál a
+topológia változásaira. Ezen protokollokat általában két
+csoportra bonthatjuk: távolságvektor, és link-állapot alapú
+protokollokra. Előbbiek csak a szomszéd által biztosított
+információkra támaszkodva, egymás feldolgozott adataira
+támaszkodva építik fel irányítótábláikat, utóbbiak pedig a
+topológia teljes ismeretének fényében döntenek a megfelelő
+útvonalak mellett.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i>//Link állapot alapú forgalomirányító protokoll (működése,
+példa) (10)//</i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A link-állapot. vagy kapcsolatállapot alapú irányító
+protokollokat futtató eszközök egy fajta üzenetszórással
+(általában multicast) juttatják el minden linkjük teljes
+állapotát (költségek, állapot, IP, stb.) minden azonos
+irányítóprotokollt futtató eszköznek, így minden eszköz
+ugyanazt az információt tudja (egy gráfot rajzol, melyben a
+csomópontok a routerek, az élek pedig a kül. költségű
+összeköttetések). Ezután dijkstra algoritmusa alapján önmaguktól
+kiindulva minden más csomóponthoz kiszámítják a legrövidebb
+útvonalat (illetve a legoptimálisabbat). (probléma: ha a költségbe
+a terhelés is számít, oszcilláció alakulhat ki, emellett
+viszonylag nagy számítási kapacitást igényel, illetve
+konfigurálásuk is nagyobb szakértelmet kíván). Ilyen protokoll
+pl. az OSPF.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A link-állapot alapú forgalomirányítókra jellemző a különböző
+metrikák széleskörű használata, melyek az egyes kapcsolatok
+költségét adják meg. Ilyenek lehetnek: adminisztratív költség,
+áteresztőképesség (nagy terhelés esetén a szélessávú vonal &lt;
+terheletlen kis szélességű), megbízhatóság, terhelés
+(oszcilláció), késleltetés, stb. + ugrásszám. (távolságvektor
+alapú protokolloknál elsődleges az ugrásszám)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+ <i>//Távolságvektor alapú (működése, példa, problémák és
+megoldások) (15)//</i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Távolságvektor alapú irányítóprotokollok esetén a routerek
+csak akkor kommunikálnak, ha valamilyen változás lép fel az egyik
+célállomás felé vezető útvonalban (megváltozik a legrövidebb
+útvonal). Ekkor a rendelkezésre álló információkból
+újraszámítják a távolságvektor táblájukat (mely célpont,
+irány – következő ugrás, költség adatokból áll), majd ezt a
+szomszédjaiknak tovább küldik. A probléma akkor adódik, ha egy
+router hibásan számol (rossz költséget ad meg), majd a hiba
+szétterjed a hálózaton, hiszen a routerek egymás irányítótábláját
+használják. További probléma lehet, ha egy link megszakad, és
+egy router olyan útvonalat kezd hirdetni, mely valójában nem is
+létezik (végtelenig számlálás), illetve akár hurkok is
+kialakulhatnak. Az ilyen protokollok általában lassan reagálnak a
+változásokra, kb. 30 másodpercenként teljes irányítótáblájukat
+hirdetik. Ilyen protokoll pl. a RIP, mely úgy oldja meg ezeket a
+problémákat, hogy:<br/>
+- Végtelenig számlálás helyett a 16
+ugrás a maximális elérhető távolság.<br/>
+- Ha valahonnan
+frissítést kap, akkor azon útvonalat, melyet a szomszédtól
+kapott, visszafelé nem hirdeti. (Osztott horizint).<br/>
+- Ha egy
+útvonal lehal, akkor azt végtelen, 16 távolsággal hirdeti
+visszafelé, amíg a kapcsolat helyre nem áll. (Osztott horizont
+mérgezett utakkal)<br/>
+- Indukált frissítések: Ha változás
+történik, azonnal frissítést küld. (Ez elárasztást okozhat.)<br/>
+-
+Gyors frissítés: újonnan indult routerek kérvényezhetik a
+szomszédok tábláinak azonnali átküldését.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Konvergenciának nevezzük, ha minden router ugyanúgy látja a
+hálózatot, az irányítás stabil. (Ennek elérése a topológiában
+történt változás után változás után a konvergenciaidő.)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A tartományközi forgalomirányításban általában
+távolságvektor-szerű irányítóprotokollt használnak, mely
+lehetővé teszi az adminisztratív költségek pontos megadását.
+(BGP)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; page-break-before: always">
+<i><u><b>OSPF</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Jellemzői, felépítése (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az OSPF egy kapcsolatállapot alapú IGP irányítóprotokoll.
+Osztálymentes forgalomirányítást tesz lehetővé, támogatja a
+hierarchikus forgalomirányítást (előre megadott adminisztratív
+körzetek szerint), tetszőleges metrika adható meg, támogatja a
+terheléselosztást, hitelesítést. A routerek egymás közti
+kommunikációja egy, az OSP számára fenntartott multicast címen
+történik. Képes megjelölni a külső útvonalakat.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Működése (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A protokoll működéséhez hello üzeneteket használ, mellyel az
+egyes kapcsolatok működését ellenőrizheti. Ha két szomszédos
+forgalomirányító kölcsönösen hello csomagokat küldözget
+egymásnak, társakká válnak, és LSAkat (link állapot hirdetés)
+cserélnek egymással, (link-állapot adatbázisokat építenek fel,
+melyeket továbbküldenek szomszédjaiknak,) így minden eszköz
+azonos adatbázissal rendelkezik. Ebből az SPF algoritmus létrehozza
+az OSFP fát, melyből a legrövidebb útvonalak kerülnek a
+forgalomirányító táblába.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A hello üzenetek kevés információval rendelkeznek, alapvetően
+egy kétirányú kapcsolat létrehozása a céljuk, mellyel
+felderítik, hogy mely interfészükön van működő, megfelelő
+paraméterekkel rendelkező (pl. megfelelő körzetbe tartozó)
+OSPFet futtató router (max 10/interfész), illetve ezek segítségével
+történik üzenetszórásos hálózatokban a DR/BDR routerek
+kiválasztása is. (Az egyes hello csomagok tartalmazzák a küldő
+interfész IDjét, adminisztratív zónáját, hálózati maszkot,
+hitelesítést, hello közti időt, küldő prioritását, DR/BDR
+azonosítókat, stb.)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Ha a hello csomagokkal két eszköz szomszédi kapcsolatba lépett,
+LSAkat cserélhetnek. Az egyes LSAk többféle szerepűek lehetnek,
+általában tartalmazzák a forgalomirányító azonosítóját, mely
+a legnagyobb című loopback interfész, vagy fizikai interfész,
+illetve maga a kapcsolatállapotokat tartalmazó szomszéd táblát,
+mely tartalmazza minden szomszédhoz az interfész azonosítót,
+szomszéd azonosítóját, IP címet, típust/állapotot. Az LSAk
+tartalmaznak ezen túl egy szekvenciaszámot is, mely megakadályozza,
+hogy régebbi állapotok felülírjanak újabb információkat
+(lineáris sorszámtér), tartalmaznak egy FCSt, és életkort (30
+percenként az egyes információk elavulnak, az LSAkat újra kell
+küldeni, időzítők beiktatásával a terhelés szétkenhető).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Ha a router megkap egy LSAt, akkor dijkstra algoritmusa alapján,
+magát a fa szerkezet közepére helyezve, és szomszédait 0
+költséggel maga köré gyűjtve minden ismert cél felé kiszámítja
+a felé vezető útvonalakat, a legrövidebbet az irányítótáblába
+helyezi, a második legrövidebbet még eltárolja, a többit törli.
+A folyamat addig halad, amíg minden cél felé nem számítja ki az
+útvonalat.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Változás esetén a linkállapot változás a területen belül
+elárasztással kerül meghirdetésre, minden eszköz nyugtáz.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az OSPF lehetővé teszi a hálózat területekre bontását. Egy
+terület határán ABR routerek vannak, melyek körzetek szintjén
+képesek forgalomirányításra és link-állapot adatbázisok
+karbantartására. Maguk a körzetek (0-s gerinc+ennél magasabb
+azonosítójú körzetek egy adminsztratív zónát,(AS) hoznak
+létre, melynek határán az ASBRek találhatók.)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>DR, BDR szerepe, működése (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+DR illetve BDR forgalomirányítókat akkor választanak a routerek,
+ha egy üzenetszórási tartományba több OSPF router is tartozik. A
+router prioritás, és az interfész ID alapján egy adott
+üzenetszórási tartományban egy router interfésze DR v. BDR
+szerepkört kaphat, feladata ekkor a hálózatrész külvilág felé
+való képviselete, illetve az elárasztások kezelése. Az
+üzenetszórási tartomány minden routere a DRel (illetve annak
+kiesése esetén a BDRrel) alakít ki társi viszonyt (hello-szomszéd
+felderítés), cserél LSAkat (teljes társi viszony, adatbázis
+kérés, frissítés, egyfajta master-slave elven, az egyes routerek
+csak a DRel kommunikálhatnak, mással nem).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>LSA típusok</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Forgalomirányító LSA – körzeten belül, interfész állapot
+adatbázis terítésre.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Hálózati LSA – körzeten belül DR által kiküldött LSA, mely
+az adott DRhez tartozó üzenetszórási tartomány routereinek
+link-állapotait tartalmazza.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Hálózati összegző LSA – ABR hirdeti egy körzetbe a külső
+megismert elérhetőségeket, alapértelmezett útvonalakat. Minden
+célhoz egy elérhetőséget hirdet, költséggel együtt. Ezen
+útvonalakra nincs SPF számítás, körzetek között távolságvektor
+alapú forgalomirányítás történik.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+ASBR összegző LSA – Ugyancsak ABR hirdeti, de a cél egy, az OSPF
+hálózatot (AS, minden körzet, vagy area együtt) a külvilággal
+összekapcsoló ASBR.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+AS külső LSA – Azok a külső elérhetőségek és
+alapértelmezett útvonalak, melyeket az ASBR ismer. Ezeket a teljes
+AS megkapja, területtől függetlenül.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Csoport tagság LSA – Az OSPF egy többesküldést is támogató
+verziójában használatos LSA.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+NSSA külső LSA- AS külső LSAval azonos tartalmú, Nem túl csonk
+körzetekben.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Külső tulajdonságok LSA- BGP kompatibilitás.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Átlátszó LSA – Gyártók számára plusz LSA lehetőségek.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; page-break-before: always">
+<i><u><b>BGP</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Internet felépítése (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az internet autonóm rendszerekre osztott, hierarchikus felépítésű,
+hálózatok hálózata. Az egyes autonóm rendszereken belül IGP
+protokollokat használnak, mint a RIP, OSPF, ISIS, azonban ezen
+protokollok használata egy bizonyos méret felett túlságosan nagy
+terhelést jelentene. A hálózatot már az internet felépítésének
+korai idejében fel kellett osztani, azonban sokáig nem volt olyan,
+az így létrejött adminisztratív rendszerek (AS) közti
+forgalomirányításra képes protokoll, mely valóban hatékony
+forgalomirányítást tett volna lehetővé. Ezt a problémát előbb
+az EGP, később, de facto szabványként a BGP vette át. A lényeg,
+hogy a hierarchiában lévő felső, az internet gerincét jelentő
+kapcsolatokon üzemeltetett routerek irányítótáblájának mérete
+minimális legyen.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>NAP, Peering, ezek szerepe (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A NAPok, illetve ma már IXPk olyan fizikailag kialakított
+központok, ahol a  különböző internetszolgáltatók AS
+hálózataikat összekapcsolják, hogy egymás közt információkat
+cseréljenek (a BGP protokoll irányítási információi
+segítségével). A szolgáltatók egymás közt több féle módon
+is cserélhetnek adatot. Lehetséges, hogy egy nagyobb szolgáltató
+bizonyos összegért cserébe sávszélességet, vagy tranzit
+forgalmat ad el egy kisebb szolgáltatónak, de az esetek nagy
+részében peering történik. Ekkor egy sok szolgáltató által
+közösen managelt IXP-ben (Internet Exchange Point) egymással
+szabadon, és ingyenesen osztják meg forgalmukat, növelve a
+rendszer redundanciáját, sebességét, megbízhatóságát, és
+mindenféle problémát elkerülve biztosítják az internet vég-vég
+elérését, a rendszer költségét pedig azokon hajtják be, akik
+rendszerüket használják.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>BGP működése (iBGP és eBGP is) (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A BGP egy tartományok közti forgalomirányítást lehetővé tevő,
+szabály alapú távolságvektor alapú irányítóprotokoll. Az
+egyes BGP routerek társait kézzel kell megadni, és nagy mennyiségű
+szabály alkalmazható a forgalom befolyásolására. A BGP minden
+elérhető cél AS felé a teljes út minden tulajdonságát
+megjegyzi (pl. AS_PATH), így inkább mondhatjuk út alapúnak, mint
+távolságvektor alapúnak, illetve, épp ezen tulajdonságainak
+köszönhetően könnyen elkerülhetőek a hurkok is. Az egyes
+eszközök közötti kapcsolat TCP szintű, megbízható
+kommunikációra épül.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A BGP-t futtató routerek TCP társi viszonyokat alakítanak ki
+egymás között, annak megfelelően, ahogy korábban meg lettek adva
+a BGP szomszédok. Ennek kialakításához Open üzenetet küldenek
+egymásnak, melyben megadják saját BGP azonosítójukat, AS
+számukat, BGPjük verzióját, és egyéb paramétereket. Ezután
+kicserélik egymással irányítási információikat Update csomagok
+segítségével. Egy-egy update csomag tartalmazhat lehetséges
+útvonalakat, visszavont útvonalakat, NLRI információt, és
+különböző Path attribútumokat. Ha egy kapcsolatot valamilyen
+hiba miatt meg akarnak szakítani, Notificationt küldenek egymásnak,
+egyébként alapbeállításként percenként KeepAlive üzenetekkel
+tartják életben a társi viszonyukat.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A BGPnek két működési állapota van. Az eBGP folyamatok két
+olyan BGP-t futtató router között zajlanak, melyek különböző
+ASekben vannak. Az iBGP folyamatok két olyan router között
+zajlanak, melyek egyazon ASben találhatóak. Erre azért van
+szükség, mert egy ASnek több határ BGP routere is lehet, ezen
+routereknek azonban egy egységként kell hirdetniük magukat, nem
+adhatja bele minden router magát az AS_PATH paraméterbe. Ezen
+routerek teljes hálót alakítanak ki TCP társi viszonyok
+segítségével.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>BGP Attribútumok (20)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Jól ismert kötelező (Olyan attribútumok, melyek minden BGP
+implementációban szerepelnek, és minden BGP routernek fel kell
+dolgoznia, és tovább kell küldenie azokat.)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+ORIGIN<br/>
+Megadja, hogy mely forrásból származik a BGP
+információ. A forrás ismerete meghatározza annak megbízhatóságát,
+és ezáltal prioritását is, mely alapján a forgalomirányítók
+az adott információt később feldolgozzák. Értéke lehet „i”,
+ebben az esetben az információ egy IGPtől származik (egy BGP
+routerre közvetlenül, network paranccsal felvitt hálózat , vagyis
+egy iBGP a forrás). „e” esetében egy BGP router EGPtől tanulta
+az információt. „?” esetében a forrás ismeretlen, a BGP
+router egy belső irányítóprotokolltól (IS-IS), vagy beállított
+statikus útvonalból tanulta.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+AS_PATH<br/>
+Minden router, mely egy külső ASből NLRI információt
+kap, az AS_PATH attribútumba behelyezi saját ASét, így adva
+tovább a cél felé vezető útvonalat. Ha egy AS többször is
+előfordul a listában, az hurkot jelent, és a frissítés
+eldobandó. Ha egymás után többször is szerepel egy AS, akkor
+azzal befolyásolható a távolság. (Azonban ez a szomszédos ASek
+konfigurációjától is függ.)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+NEXT_HOP<br/>
+A következő ugrás IP cím a cél eléréséhez. eBGP
+esetében mindig a közvetlenül kapcsolódó szomszéd IP címe,
+iBGP esetén ha külső cím, akkor a külső szomszéd IP címe, ha
+belső, akkor a hirdető IP címe.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Jól ismert tetszés szerinti (olyan tulajdonságok, melyek minden
+BGP implementációban megtalálhatóak, azonban beállításuk nem
+kötelező)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+LOCAL_PREF<br/>
+Belső hirdetéseknél használatos, megadható vele,
+hogy az adott útvonal milyen prioritású legyen, ezáltal
+megadható, hogy az ASen belüli eszközök mely kifelé mutató
+linket részesítsék előnyben egy bizonyos cél AS felé.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+ATOMIC_AGGREGATE<br/>
+Lehetséges átlapolódó útvonalak
+aggregálása, ám eközben információ veszik el. Ha aggregált
+útvonal hirdetése történik, akkor ez a jelölő meg van adva, és
+jelzi, hogy az útvonal tovább nem aggregálható. Az aggregációt
+végző eszköz IP címe, és AS száma az opcionális tranzitív
+AGGREGATOR attribútumban lehet megadva.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Opcionális tranzitív (Nem minden implementáció tartalmazza. Ha
+egy eszköz nem képes feldolgozni, akkor egyszerűen továbbadja.)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+AGREGATOR korábban tárgyalva.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+COMMUNITY<br/>
+Útvonal csoportokra jellemző szabályok adhatók meg
+(pl. hogy az útvonal iBGPben, vagy eBGPben hirdethető, vagy sem)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Opcionális nem tranzitív (Nem minden implementáció tartalmazza,
+és továbbküldésük sem garantált)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+MULTI_EXIT_DISC<br/>
+A kapcsolódó szomszédos ASnek szól. Ha az
+adott külső AShez több link is csatlakozik, akkor a linkekhez
+metrika rendelhető, melynek függvényében a szomszédos hálózat
+felől terhelés elosztás, illetve preferált link adható meg.
+Nagyban függ a szomszédos hálózat konfigurációjától és BGP
+implementációjától.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+ORIGINATOR ID és CLUSTER_LIST: egyes BG implementációk lehetővé
+teszik az ASek klaszterekre bontását, az ezen belüli útvonalak
+esetén alkalmazandó attribútumok.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; page-break-before: always">
+<i><u><b>TCP-UDP</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>A TCP, UDP feladat szegmens, port, … (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az IP egy „best effort”, legjobb szándék alapú protokoll, mely
+kizárólag nodeok azonosítására alkalmas. Ahhoz, hogy az egyes
+nodeokon futó különböző processzek közötti kapcsolatot is
+biztosítani tudjuk, azokat azonosítanunk kell. Erre vezették be a
+portszámokat. Az a protokoll, mely csak szimplán a port számok
+alapján képes két node processzei között az adatok átvitelére,
+az UDP. Ez egy nagyon primitív protokoll, forrás/cél port számot,
+FCSt tartalmaz, és az adatot magát. Nagy sebességű, igénytelen
+szolgáltatásokra használják, úgy mint hang átvitel, és egyes
+management funkciók. Azonban, az ilyen jellegű forgalom nem
+szabályozott (pl torlódás védelem hiányzik), ezért általában
+nem engedélyezett a széleskörű használata.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A TCP protokoll az UDP port alapú szolgáltatásán felül
+torlódásvédelemmel, illetve minimális plusz terhelést okozó
+nyugtázási mechanizmussal képes megbízható, és a hálózati
+stabilitást szem előtt tartó adatátvitel biztosítására.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Torlódás vezérlés (mi a probléma, milyen megoldások
+vannak erre) (20)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Torlódásnak (congestion) nevezzük azt a jelenséget, amikor egy
+nagy csomagburtöt produkáló forrás vagy források által
+kibocsátott csomagok mennyisége nagyobb, minthogy azt a hálózat
+átvinni lenne képes. Ez különösen azon szűk keresztmetszeteknél
+fordul elő, ahol több útvonal aggregálódik. Ebben az esetben a
+csomagok a hálózatban felhalmozódnak, és előbb a hálózat
+átviteli kapacitásának drámai lecsökkenését, majd, súlyosabb
+esetben teljes lefulladását okozza. Ha ez bekövetkezik, egyes
+adatfolyamok újraindítása lehetetlenné válhat.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A torlódás vezérlés megoldására  a TCP ACK üzenetek
+használhatók (elsősorban, illetve a visszajelzés fogadására
+vonatkozó időzítők). Ha egy TCP forrás elküldi (1) csomagot,
+arra a cél egy (2) jelzésű ACK csomaggal válaszol, jelezve, hogy
+az (1) csomagot megkapta, és a (2) csomagra vár. Ha a forrás
+kiküldi (2), (3)csomagokat, és (2) elveszik, akkor a (3) csomag
+megérkezése után cél továbbra is (2) tartalmú ACKot küld
+vissza, hiszen sorban ezt a csomagot még mindig nem kapta meg. A
+jelenséget ACK duplikációnak nevezzük. (ACK duplikáció
+előfordulhat csomag sorrend áthelyeződés miatt is.)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i>(TCP Tacho és TCP Rhino)</i><br/>
+A TCP a TCP viszony felépítése
+után beállít egy MSS nevezetű, általában két csomag szélességű
+torlódási ablakot. A torlódási ablak szélessége meghatározza,
+hogy hány, a hálózatban éppen úton lévő (tehát nyugtázatlan)
+csomag lehet jelen egy időben. A torlódási ablakot minden
+visszaérkező ACK után 1 MSSel növeli meg, azaz effektíve
+megkétszerezi. A torlódási ablak ilyetén való exponenciális
+növelését mindaddig folytatja, amíg egy dupla ACK üzenetet nem
+kap. (Egy dupla ACK csomag sorrend változását is jelölhet, ezért
+a torlódásvédelem nem veszi egyből csomag veszteségnek.) Ezután
+átvált torlódásvédelmi üzemmódba, amely azt jelenti, hogy
+minden küldési ciklusban csak egy MSSel növeli a torlódási ablak
+méretét, így egy lineáris növekedés történik. Ha három dupla
+ACK következik egymás után azonos szekvencia számmal, azt már
+nagy valószínűséggel csomagveszteséget jelent, ezért ebben az
+esetben a TCP FastRetransmit segítségével azonnal kiküldi a
+hiányzó csomagot, majd implementációtól függően Tacho esetében
+a torlódási ablakot 1 MSSre állítja, és SlowStart algoritmussal
+folytatja az átvitelt, Rhino esetében pedig a FastRetransmit után
+a torlódási ablak méretét a kezdeti SlowStart befejezésekor
+elért méretre redukálja, majd Torlódásvédelmi Üzemmódban
+folytatja működését.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A TCP Vegas egy nagyon finom működésű torlódásvédelem, mely a
+SlowStart fázis után a duplikált ACKok alapján dinamikusan
+állítja a torlódási ablak méretét, csomagvesztés esetén pedig
+lefelezi azt. Ez a megoldás nem túlságosan elterjedt.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>NAT (működése, típusai) (15)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A NATra azért van szükség, hogy a belső hálózatban használt
+privát címtartományból származó IP címeket globálisan
+irányítható külső címekre cseréljük, ezáltal növelve a
+korlátos IPv4 címtartomáyn kihasználását. További előnyei
+közé sorolható, hogy a belső hálózat számára egyfajta
+biztonságot nyújt a külső behatolásokkal szemben. Hátrányai
+azonban, hogy egy „single-point-of-failure” jön létre, kiesése
+esetén a belső hálózat teljesen elszigetelődik a külsőtől,
+újraindulása esetén minden meglévő kapcsolat megszakad.
+Ellentmond az internet vég-vég modelljével, ráadásul hamis
+biztonság érzetet is kelt. További problémát okozhat, hogy egyes
+alkalmazások nem képesek együttműködni a címfordítással.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A NATnak rengeteg implementációja létezik. Ezek közül a három
+alap modell:</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Statikus NAT: egy belső eszköz IP címét egy külső IP címre
+fordítjuk. Az eszköz külső hostok számára a külső, átfordult
+címen keresztül lehetséges.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Dinamikus NAT: Belső eszközök egy csoportját külső címek előre
+meghatározott csoportjára fordítjuk. Egyszerre csak annyi eszköz
+léphet ki, ahány külső cím felhasználható, a belső eszközök
+az átmappolt külső ímen a belső eszközt minden további nélkül
+elérhetik.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+PAT: A belső eszközök egyetlen külső címre (ltalában a
+NATolást végző eszköz publikus internet felé nyitott
+interfészének címére) vannak átmappolvaa következő általános
+módok alapján:</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+FullCone NAT: A belső eszköz cím:port párosa egy külső cím:port
+párosra fordul. Egy külső eszköz a belső eszközt bármikor
+elérheti a külsőcím:külsőport-ra küldött üzenetekkel.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Restricted cone NAT: Egy belső eszköz cím:port
+külsőcím:külsőportra fordul. Egy külső eszköz a
+kölsőcím:külsőportra küldött cím:bármelyport forrású
+üzenetével tud kommunikálni a belső eszközzel, ha az átfordított
+külső címre küld üzenetet, azonban csak abban az esetben, ha a
+belső gép már küldött a külső eszköz valamely portjára
+adatot.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Port Restricted cone NAT: Az előzővel megegyező módon működik,
+azonban a külső eszköz csak azon portján tud visszafelé küldeni,
+amelyik portjára belső eszköz korábban üzenetet küldött.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+ Symmetric NAT: Minden belső gép által egy külső gép felé
+irányuló kommunikáció esetén a belső gép címe:portja
+különböző külsőcím:külsőport párokra van leképezve,
+ezáltal csak azon gépek tudnak válaszolni (és mindegyik különböző
+külső cím:port párra), amelyek részére bentről már érkezett
+korábban adat.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; page-break-before: always">
+<i><u><b>QoS</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Miért fontos (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az IP protokoll segítségével nem lehet az egyes szolgáltatásokat
+megkülönböztetni, azok „legjobb szándék szerint” haladnak
+keresztül a hálózaton. Egyetlen csomag folyam számára sem
+biztosítottak sem sávszélességbeli, sem pedig megbízhatósági
+tényezők. (A sávszélesség a terhelés függvényében változhat,
+csomagok elveszhetnek, stb.) Ezt a legtöbb mai alkalmazás jól
+viseli, a hálózat áteresztőképességéből adódó problémákat
+alkalmazás szinten képes kiküszöbölni (elasztikus alkalmazások).
+Azonban már ma is vannak olyan, folyamatos média alkalmazások is,
+(pl. telefon, videó közvetítések, játékok), melyek rosszul
+viselik a késleltetésből származó problémákat, de bizonyos
+határok között elviselik a hálózati átvitel ingadozását.
+Végül, vannak olyan szigorúan valós idejű, pl. vezérlő
+alkalmazások is, melyek egyáltalán nem tolerálják a hálózat
+sebességének, vagy megbízhatóságának változását. Ez utóbbi
+két alkalmazás típus támogatására fejlesztik/fejlesztették ki
+a QoS szolgáltatásokat.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>QoS garanciák szabályai (15)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+QoS szolgáltatások biztosításához néhány alapvető szabályt
+kell szem előtt tartanunk.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Első szabály: Ahhoz, hogy a forgalomirányítókon
+megkülönböztethessük a különböző alkalmazásokhoz tartozó
+forgalmat, a széleken, a bemenő routereken a forgalmakat
+azonosítani kell, meg kell jelölni, és különböző szabályokat
+kell alkalmazni rájuk.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Második szabály: Az egyes adatfolyamokat izolálni kell, és a
+biztosítani kell az adatfolyamok szabálykövető magatartását
+(csak akkora sávszélességet kaphatnak, amekkorát korábban
+lefoglaltak).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Harmadik szabály: Mindezt úgy kell megvalósítanunk, hogy a lehető
+legjobban kihasználjuk a rendelkezésre lévő sávszélességet. Ha
+egy alkalmazás több sávszélességet igényel, mint ami elő van
+írva, ám ez a sávszélesség gond nélkül biztosítható,
+megadhatjuk neki. Ennek legjobb módja, ha a rendelkezésre álló
+erőforrásokat arányaiban osztjuk meg.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Negyedik szabály: A hálózat nem garantálhat megfelelő minőségű
+szolgáltatást bármely folyamatnak. Ha egy folyamatnak QoSre van
+szüksége, azt előbb kérelmeznie kell, megadva igényeit és
+forgalmi jellemzőit, majd a QoSt futtató router visszajelez, hogy a
+hálózat képes-e a QoS szolgáltatás igény szerinti
+biztosítására.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Intserv (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az IntServ egy adatfolyamonkénti szigorú QoS szolgáltatáson
+alapuló rendszer, specifikus alkalmazások (pl. videó átvitel)
+kezelésére. Feltételezi, hogy a forrástól a célig van egy
+multicast fa, melyen minden routernek egyedileg kell managelnie
+minden adatfolyamot. Az IntServ működéséhez minden alkalmazásnak,
+mely valamilyen QoS igénnyel rendelkezik, egy FlowSpecs üzenettel
+meg kell adnia, hogy milyen QoS szolgáltatási minőséget igényel.
+Ez az információ két részből épül fel. Egyrészt a TSpecből,
+másrést az RSpecből.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A TSpec tartalmazza, hogy az alkalmazás milyen tulajdonságokkal
+bír. Ezt általában egy a token bucket mechanizmusra jellemző
+frekvencia, és mélység adatpár formájában adják meg. (Az
+általános csomagküldési sebesség, és a legnagyobb lehetséges
+burst hossza.)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az RSpec az adatfolyam által igényelt szolgáltatási minőség
+szintjét írja le. A „best effort” szintű igény esetén nincs
+szükség erőforrás lefoglalásra, az internet alapvető
+szolgáltatási szintjét igénylő, igénytelen szolgáltatások
+tartoznak ebbe a kategóriába (pl. FTP, http, stb.). Efölött
+található a ControlledLoad szolgáltatás, mely bizonyos határokon
+belül mozgó minőséget határoz meg, egy bizonyos konstans
+késleltetéssel, és átlagos csomagveszteséggel. A Guarateed szint
+pontosan megszabott sávszélesség átadását, és nulla
+csomagveszteséget garantál.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az erőforrások lefoglalása az RSVP protokoll segítségével
+történik. Minden eszköz, mely QoS adatok küldésére alkalmas,
+PATH üzenetet küld szét a hálózatban. Erre a fogadó eszközök
+RESERVE üzenetekkel válaszolhatnak (ezekben vannak a FlowSpec
+tulajdonságok is), melyek végigtracelik az útvonalat egészen a
+feladóig, minden routeren egyenként lefoglalva a szükséges
+erőforrásokat. Ha azok nem állnak rendelkezésre, a router reject
+üzenettel utasítja el a kérést, és az eszköz másik útvonallal
+kénytelen próbálkozni. Ha egy útvonal felépült, az meg is
+szűnhet, ha bizonyos ideig nem történik adatátvitel. (Soft
+Handover)<br/>
+<br/>
+Az IntServ egyik legnagyobb hátránya, hogy
+minden routernek külön-külön kell tárolnia, és managelnie
+minden rajta áthaladó folyam lefoglalást, ami kis méretekben
+ugyan működőképes, de az internet méretei mellett nem
+megvalósítható.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Diffserv (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A DiffServ esetében a hálózat szélén futó router az
+osztályozási szabályok alapján megjelöli az egyes
+adatfolyamokhoz tartozó csomagokat, kiméri, hogy ezek mely profilba
+sorolhatók, (IPv4 esetén TOS, IPv6 esetén Traffic Class mező 6
+bitje-&gt;PHB), majd az adatfolyam kondicionálása (késleltetés,
+csomag eldobás) kiküldi az egyes csomagokat a hálózatra.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A hálózaton futtatott DiffServet implementáló forgalomirányítók
+ezután csak a csomag jelölésére hagyatkoznak, amikor a
+szabályokat foganatosítják az egyes csomagokkal kapcsolatban. A
+link terheltségétől függően eldobják, vagy késleltetik az
+egymáshoz képest relatív prioritással rendelkező csomagokat. A
+szolgáltatás hátránya, hogy a különböző szolgáltatók eltérő
+módon kezelhetik az azonos jelöléssel rendelkező csomagokat, így
+a hálózat teljes viselkedése vég-vég modellben nem teljesen
+kiszámítható. Azonban nagy előnye, hogy az egyes routereken nincs
+szükség az adatfolyamok egyenként való managelésére, csupán a
+mezők alapján való döntésre.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Van két alapvető szolgáltatási osztály lehetőség. Az egyik a
+gyorsított továbbítás, melynek használata esetén egy minimális
+sávszélesség garantálva kell legyen az ilyen típusú csomagok
+számára, garantálja ezen típusú forgalom izolációját, és
+előre engedélyezni kell az átvitelét a forgalom várható
+maximális sávszélesség igénye alapján (RSVP)-&gt;lehetővé
+teszi virtuális bérelt vonalak kialakítását.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A másik szolgáltatás típus a biztos továbbítás, melyen belül
+4 forgalmi prioritás alakítható ki, melyek egymáshoz képest
+előnyben részesülnek. Ha a sávszélesség nagyon leesik, alulról
+felfelé egyre több réteghez tartozó csomagok kerülnek
+automatikusan eldobásra. (Ez problémát okozhat a TCP forgalom
+számára.) Ha egy adatfolyam nem az előírtak szerint viselkedik,
+átosztályozódhat.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; page-break-before: always">
+<i><u><b>Hálózati biztonság</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Problémák, megoldások (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az internet szabad, bárki által hozzáférhető, nagy populációval
+rendelkező „közösség”. Az internetre kapcsolódó eszközökön
+nagy értékű adatok vannak tárolva, a cégek szolgáltatásaikat
+az interneten keresztül népszerűsítik, sőt, sok cég ezen
+keresztül is adja szolgáltatásait. Egy ilyen nagy, szabadon
+hozzáférhető hálózat esetén, ahol ilyen jellegű forgalom és
+adattárolás is van, elkerülhetetlen a hackerek, támadások,
+lopási kísérletek megjelenése, ráadásul szabadon hozzáférhető
+eszközök is léteznek ilyen célokra. Ilyen környezetben előtérbe
+kerülnek a hálózatok biztonságának megerősítését célzó
+eszközök.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Ilyenek a tűzfalak (személyes vagy hálózatot védő fizikai
+tűzfalak), különböző hálózati architektúrák (több zónás,
+DMZvel), proxy-k, NAT/PAT, Behatolás érzékelő rendszerek,
+automatikus ellenlépések, titkosítás, hitelesítés.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A támadások lehetnek túlterheléses DOS, vagy DDOS támadások,
+vírusok, férgek, kémprogramok, konkrét adatlopási kísérletek,
+külső hozzáférési kísérletek, vagy az ezeket megelőző, a
+gyenge pontok kipuhatolását célzó tevékenységek.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Tűzfal típusok, képességek (25)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<b>Csomagszűrő tűzfal<br/>
+</b>Nagyon gyors, kis erőforrás
+igényű tűzfal típus, melyet forgalomirányítókon a
+legcélszerűbb alkalmazni. IP forrás és cél cím, illetve forrás
+és cél portszámok alapján képes a forgalom szűrűsére. (pl.
+kivédehtő az IP spoofing, belső illetéktelen hozzáférések,
+stb.) Lehetőség van a TCP flagek kihasználására is.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<b>NAT/PAT<br/>
+</b>Statikus, vagy dinamikus címfordítást
+végeznek. Utóbbi esetben, különösen megfelelően konfigurált
+(például szimmetrikus, vagy PortRestricted cone NAT) típusú PAT
+alkalmazása esetén csak a belső gépek kiküldött üzeneteire
+jöhet válasz (elméletileg), elrejtve a belső eszközöket a
+külvilág elől. Ez azonban alkalmazási rétegben problémákat
+okozat.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<b>Kapcsolat szintű átjáró<br/>
+</b>Megvizsgálja a TCP/UDP
+viszony felépítését, ha minden rendben, akkor az összes, a
+viszonyhoz tartozó csomagot átengedi, gyanús kapcsolódás, vagy
+folyam viselkedés esetén lezár. Lehetséges alkalmazás rétegbeli
+funkciók hozzáadása is. Nem vizsgál minden egyes csomagot.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<b>Állapottartó<br/>
+</b>Az előző kettő kombinációja. A 3, 4
+rétegekben működve naplózza a kimenő forgalomhoz tartozó
+csomagokat (Forrás/Cél IP, és Port), és csak azokat a csomagokat
+engedi át, amike két meghatározott cél között szabályos módon
+haladnak át, megelőzendő egy harmadik, illetéktelen forrásból
+való behatolást. Képes a protokollokhoz tartozó flagek
+ellenőrzésére is. (kicsit csomagszűrő, kicsit NAT, kicsit
+kapcsolat szintű)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<b>Proxy<br/>
+</b>A proxy szerver ismer minden protokollt, és
+titkosított esetben minden, egy belső eszköztől érkező, vagy
+annak érkező csomagot megfog, megvizsgálja a tartalmat és a
+fejléceket, és ha minden rendben van, csak akkor engedi tovább a
+csomagokat. Lehetséges az egyes felhasználók alapján történő
+hitelesítés, a protokollhelyes működések betartatása, illetve
+az internetes forgalom esetében a DNS információk, vagy http
+üzenetek gyorsító tárazása.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<b>Alkalmazás szintű szűrés<br/>
+</b>A legintelligensebb
+tűzfaltípus, mely képes értelmezni az adott protokollok által
+szállított adatokat is, és ez alapján képes döntést hozni.
+Dinamikusan képes portokat nyitni, addig tartja nyitva a portokat,
+amíg arra szükség van, és csak akkor, ha azt belső kérés
+indokolja. Titkosított forgalom esetében a proxyval azonos módon
+jár el.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>IDS (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+IDS és IPS rendszerek feladata alapvetően a szenzoraikon áthaladó
+forgalom mintázatának figyelése, a statisztikai alapon (például
+csomagméretekben, csomagsűrűségben, stb.) történő szembetűnő
+változások, vagy gyanús állapotok észlelése, és jelentése,
+IPS esetén a tűzfal átkonfigurálása a gyanús forgalom
+kiszűrésére, vagy a hálózat alaphelyzetbe állítása.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az IDSek nagy előnye a tűzfalakkal szemben, hogy nem csak a
+kívülről befelé, hanem a belső hálózatból kifelé irányuló
+gyanús hálózati forgalmat is képesek detektálni, log fájlokba
+elmenteni, és minderről (esetleg valós időben)értesíteni a
+hálózat üzemeltetőjét.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az IDSek egy speciális típusa csomagonként vizsgálja át a
+forgalmat, és egy előre definiált minta adatbázisból képes
+beazonosítani a gyanús támadási mintázatokat, vírusokat, vagy
+kódokat, és ez alapján képes cselekedni. (pl. Snort).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az IDS rendszerek általában nem elég intelligensek ahhoz, hogy
+valóban hasznos IPS rendszerekként üzemeljenek, rossz hálózati
+körülmények között (például ott, ahol sok a hibás csomag,
+„nagy a háttérzaj”, vagy túl nagy a hálózati forgalom,
+egyszerűen annyi fals pozitív eredményt produkálhatnak, hogy a
+valódi behatolások kiszűrése lehetetlen.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%; page-break-before: always">
+<i><u><b>DNS</b></u></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Szerepe, felépítése, működése (25)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A DNS (Domain Name System) feladata az interneten irányításra
+használt IP címek emberek számára megjegyezhetőbb, szöveges
+formára való „feloldása”, illetve fordítva. Ennek a
+rendszernek kulcs-érték párok formájában, egy elosztott,
+hierarchikusan felépülő adatbázisban kell elmentenie a DNS név –
+IP cím, (ADDRESS), illetve fordított kereséshez PTR kulcsokat,
+Email útválasztáshoz használt mail szerver DNS neveket (MX), és
+egyéb (pl. szolgáltatások - SRV, vagy névfeloldók - NS)
+helyettesítő neveit. A hierarchikus felépítés, és névtér,
+illetve az adatok elosztott tárolása lehetővé teszi a rendszer
+nagyfokú skálázhatóságát, és hibatűrését.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az internet méretű DNS hierarchia tetején egy 13 szerverből álló
+gyökér tartomány áll („.”), ez alatt pedig a legfelsőbb
+szintű tartománynév kiszolgálók, melyek alapvető tevékenység,
+illetve földrajzi elhelyezkedés szerint vannak elosztva. Ezek alatt
+a szerverek alatt tetszőleges DNS hierarchia lehet, vagyis a névtér
+zónákra van bontva, minden zónának van (általában több) DNS
+tároló szervere (szerverenként legalább egy zóna), és minden
+zóna alatt altartományok lehetnek, újabb zónákkal.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A DNS szerverek által tárolt rekordok tartalmazzák a domain nevet,
+annak típusát (pl. SRV, ADRESS, MX, NS), a bejegyzés osztályát
+(pl. IP), egy TTL mezőt (másodpercben megadott élettartam, ha
+lejár, az adatot frissíteni kell), illetve magának az adatnak a
+hosszát, és az adatot. A kérések, és válaszok egyszerre több
+lekérdezést, és választ is tartalmazhatnak.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A DNS kéréseket a névfeloldók kezelik (resolver). A számítógépek
+operációs rendszerében található ilyen, mely egy gyorsítótárat
+tart karban. Efelett található az Internet szolgáltató resolvere,
+amely egy DNS szerver is egyben, és ugyancsak gyorsítótárazást
+valósít meg. Efelett a DNS felett található a fordított fa
+struktúrájú DNS hierarchia, amely egészen a gyökérig nyúlik.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az egyes DNS nevekben a különböző tartományokat jelölő
+szöveges elemeket pontok választják el, az egyes részek jobbról
+balra egyre specifikusabbak, illetve alacsonyabb prioritásúak. Ha a
+számítógép resolvere nem találja gyorsítótárában a megfelelő
+ADDRESS bejegyzést (vagy egyéb bejegyzést), akkor a DHCP által
+kiosztott céges, vagy az internet szolgáltatóhoz tartozó DNS
+szerverhez fordul segítségért. Ha ennek a resolvernek sincs meg
+gyorsítótárában az információ, akkor az a gyökér DNS
+szervertől indulva, lépésenként kérdezi le (a DNS névben
+jobbról balra), sorban a DNS szervereket (NS), amíg el nem jut a
+cím legelső mezőjéig, melyre az eredetileg kért IP cím feloldás
+megtörténik. Ezt az adatot kb. 24 órára el is tárolja.(Ez
+csökkenti a DNS szerverek leterheltségét, azonban csökkenti az
+újabb, vagy megváltozott bejegyzések hálózaton való
+elterjedését is). Ha a teljes utat végig járja a resolver, az így
+kapott információt Hiteles, mérvadó válasznak nevezzük. Ha
+később a szerver gyorsítótárából válaszol a kérésre, azt
+nem-mérvadó válasznak nevezzük. (Nem biztos, hogy
+naprakész/hiteles)</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+PTR, vagyis reverse lookup esetén egy az ADDRESS tartománynév
+rendszerhez hasonló hierarchiából keresik ki a szerverek az IP
+címhez tartozó Domain nevet. A keresés azonosan zajlik, ám itt
+pl. a 192.168.1.2 megtalálásához a 2.1.168.192.in-addr.arpa
+tartománynév-soron kell végigmennie a resolvernek.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A kérés-válasz alapú DNS lekérdezések UDP kapcsolatokon
+keresztül zajlanak, azonban a rendszer TCPre is átállhat nagyobb
+mennyiségű DNS tartalom átvitele esetén (pl. névtáblák
+másolásakor).</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>Miért skálázható (10)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+A DNS azért skálázható annyira jól, mert felépítése
+hierarchikus, az adatbázis elosztott, minden szervernek elég csak
+az alatta álló altartományok DNS kiszolgálóinak neveit és IP
+címeit ismerni, ráadásul minden címfeloldást végző eszköz
+gyorsítótárazást alkalmaz, ezzel tehermentesítve a felettük
+álló tartmonynév kiszolgálókat. Ezen kívül a rendszer, mivel a
+zónainformációkat általában több szerver is tárolja,
+redundáns, sőt, elosztott terhelést tesz lehetővé. Ezen kívül
+lehetősége van az egyes cégeknek, vagy nagyobb hálózatot
+üzemeltetőknek saját DNS szerverek beüzemelésére is, így a
+helyi, hálózaton belüli (kívülről nem hozzáférhető) eszközök
+és szolgáltatások feloldásához nincs szükség az internetes,
+publikus DNS szerverek bevonására sem, ha mégis, akkor a kérések
+nagy része az alsó szinteken álló resolverek gyorsítótáraiból
+kiszolgálható.</p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+<i><b>DNS biztonsági problémák (5)</b></i></p>
+<p lang="hu-HU" class="western" style="margin-top: 0.19in; margin-bottom: 0.19in; line-height: 100%">
+Az egyes DNS szerverek közötti forgalom titkosítatlan, nincs
+hitelesítés, így akár félre is vezethetőek a kérések. DDOS
+támadásokkal a DNS szerverek, és resolverek viszonylag egyszerűen
+kiiktathatók. A DNS szerverek kijátszhatók a megfelelő
+módszerrel, (pl. hamis frissítésekkel), így a rekordok hibásak
+lehetnek, a forgalom eltéríthető. Ráadásul, ha egy gyorstárba
+rossz, vagy hamisított információ kerül, az a TTL miatt általában
+viszonylag hosszú ideig ott is marad (akár 24 órára) -&gt;megoldás
+lehet a DNSsec, amely egy publikus kulcsú titkosításon alapuló
+titkosítási/hitelesítési lehetőség, azonban megvalósítása
+problémás lehet.</p>
+</body>
+</html>
